@@ -61,6 +61,11 @@ for (const p of cardFiles) {
 }
 
 // ---- 4. asset references resolve ----------------------------------------
+// Blind spot: some components/*/*.card.html specimens build icon paths
+// from a template literal, e.g. url('../../assets/icons/${n}.svg') with
+// `n` supplied separately (e.g. <Di n="search"/>). A static regex can't
+// resolve the interpolated `${n}`, so those references are invisible to
+// this check and go unverified. A JSX-aware resolver is out of scope.
 const scanned = [
   ...walk(join(ROOT, 'components'), (p) => /\.(jsx|html|css)$/.test(p)),
   ...walk(join(ROOT, 'guidelines'), (p) => /\.(html|css)$/.test(p)),
@@ -80,7 +85,23 @@ for (const p of scanned) {
 // name is a quoted JS object key immediately followed by `:` — the quote
 // sits where CSS would have only whitespace, so it's optional here.
 const DEF = /--([A-Za-z0-9-]+)['"]?\s*:/g;
-const USE = /var\(\s*--([A-Za-z0-9-]+)/g;
+// Captures the token name and, if present, the comma that opens a
+// var(--x, fallback) fallback argument. A var() with a fallback can never
+// break at runtime — CSS falls back to the second argument whenever the
+// property is unset — so it's out of scope for this check regardless of
+// whether the property is ever defined anywhere. The fallback expression
+// itself may nest further parens/commas (e.g. var(--a, var(--b, 1px)));
+// we only need to detect that a fallback is present, not parse it.
+const USE = /var\(\s*--([A-Za-z0-9-]+)\s*(,)?/g;
+
+// Custom properties that are deliberately left undefined by the design
+// system because they are call-site *parameters*, not tokens — the value
+// is meant to be supplied by whatever consumes the utility, not shipped
+// as a default. `icon`: readme.md documents the pattern — tint with the
+// `.ax-icon` utility (`background:currentColor` + `mask:url(icon)`) —
+// consumers set `--icon` inline; nothing in the bundle itself needs to.
+const UTILITY_PARAMS = new Set(['icon']);
+
 const globalTokens = new Set();
 for (const p of walk(join(ROOT, 'tokens'), (f) => f.endsWith('.css'))) {
   for (const m of readFileSync(p, 'utf8').matchAll(DEF)) globalTokens.add(m[1]);
@@ -89,22 +110,28 @@ for (const p of scanned) {
   const src = readFileSync(p, 'utf8');
   const local = new Set([...src.matchAll(DEF)].map((m) => m[1]));
   for (const m of src.matchAll(USE)) {
-    if (!globalTokens.has(m[1]) && !local.has(m[1])) {
-      fail('tokens', `${rel(p)} uses --${m[1]}, not defined in tokens/ nor in the file itself`);
+    const [, name, hasFallback] = m;
+    if (hasFallback) continue;
+    if (!globalTokens.has(name) && !local.has(name) && !UTILITY_PARAMS.has(name)) {
+      fail('tokens', `${rel(p)} uses --${name}, not defined in tokens/ nor in the file itself`);
     }
   }
 }
 
 // ---- report --------------------------------------------------------------
+// The same check can report the identical file+token combination more than
+// once (e.g. --icon appears in both `mask` and `-webkit-mask` on one line);
+// dedupe by message so each real problem is reported exactly once.
+const uniqueFailures = [...new Set(failures)];
 console.log(
   `components ${manifest.components.length} · cards ${cardFiles.length} · ` +
   `tokens ${globalTokens.size} · ` +
   `icons ${walk(join(ROOT, 'assets/icons'), (p) => p.endsWith('.svg')).length} · ` +
   `doodles ${walk(join(ROOT, 'assets/doodles'), (p) => p.endsWith('.svg')).length}`
 );
-if (failures.length) {
-  console.error(`\n${failures.length} failure(s):`);
-  for (const f of failures) console.error('  ' + f);
+if (uniqueFailures.length) {
+  console.error(`\n${uniqueFailures.length} failure(s):`);
+  for (const f of uniqueFailures) console.error('  ' + f);
   process.exit(1);
 }
 console.log('All checks passed.');
