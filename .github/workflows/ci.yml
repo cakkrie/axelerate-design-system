@@ -25,11 +25,32 @@ jobs:
           git diff --exit-code docs/index.html \
             || { echo '::error::docs/index.html is stale — run `npm run docs` and commit'; exit 1; }
 
-      - name: Brand adherence lint
+      - name: oxlint (informational — see rule notes below)
         continue-on-error: true
         # Pinned to 1.33.0, not the floating `1` tag: oxlint >=1.34 hard-fails
         # config parsing on any unrecognized top-level key, and
         # _adherence.oxlintrc.json carries a non-standard `x-omelette` key that
         # must not be edited (frozen bundle layout). 1.33.0 is the newest
         # release that still tolerates it, so pin there instead of crashing.
+        #
+        # What this step actually enforces, rule by rule (do not read the
+        # warning count as "brand-token drift" — verified against oxlint 1.0.0
+        # through 1.80.0, no version differs on this):
+        #   - no-restricted-imports : LIVE. Flags deep imports of component
+        #     internals (e.g. components/actions/**) instead of the barrel.
+        #   - react/forbid-elements : INERT BY CONSTRUCTION. Configured with
+        #     forbid: [], so it can never fire — the rule is declared but has
+        #     nothing to forbid.
+        #   - no-restricted-syntax  : NO-OP. This is where the raw-hex/raw-px/
+        #     font/prop-shape selectors live (the ones that read as "brand
+        #     adherence"). No oxlint release implements `no-restricted-syntax`
+        #     as a real rule — 1.0.0-1.33.0 silently ignore it as unknown;
+        #     1.34.0+ would hard-error "Rule 'no-restricted-syntax' not found
+        #     in plugin 'eslint'" if the x-omelette parse didn't already fail
+        #     first. It never runs, on any version.
+        # Net effect: every warning this step currently prints (50, in the
+        # frozen bundle as of this commit) is ordinary JS lint noise
+        # (no-func-assign / no-unused-expressions / no-unused-vars from
+        # oxlint's default rule set) — none of it is brand-token or
+        # component-API drift. Only the deep-import check is real signal.
         run: npx --yes oxlint@1.33.0 --config _adherence.oxlintrc.json .

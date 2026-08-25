@@ -26,6 +26,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
 
+      # Remove paths that must never be published, before the artifact is
+      # built. This only deletes from the ephemeral runner's checkout — a
+      # working copy that is discarded when the job ends — never from the
+      # repo itself; nothing here can push, commit, or otherwise touch git
+      # history. `rm -rf` is used (not `rm -r`) so a path that is already
+      # absent does not fail the step.
+      #   - uploads/       : ~3MB of third-party reference imagery, including
+      #     a scraped Squarespace page design that is not ours to redistribute.
+      #   - .superpowers/   : internal planning/spec documents, not part of the
+      #     public-facing gallery. (.superpowers/sdd/ is already untracked by
+      #     git and never reaches the runner, but the whole directory is
+      #     removed here too for a single, easy-to-audit rule.)
+      - name: Strip private/non-redistributable paths from the deploy copy
+        run: rm -rf uploads/ .superpowers/
+
       # Upload the repo root, not docs/ — the gallery iframes ../guidelines/…,
       # ../components/…, and ../ui_kits/… so those paths must be inside the artifact.
       - uses: actions/upload-pages-artifact@v3
