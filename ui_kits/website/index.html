@@ -1,0 +1,217 @@
+<!-- @dsCard group="Website" viewport="1280x800" name="Marketing site" subtitle="Demonstrative landing — no product source was provided" --><!-- @startingPoint section="Screens" subtitle="Invite-only marketing landing" viewport="1280x800" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Axelerate — the inside track</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>.wrap{max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}</style>
+</head><body>
+<div id="root"></div>
+<script type="text/babel">
+const {Button,IconButton,Input,Select,Checkbox,Tabs,Card,Badge,Tag,Dialog,Toast,Tooltip,TallyCount,MarkerBar,StatBlock,FileCard,Bubble,StickyNote,Sticker,Illustration}=window.AxelerateDesignSystem_edbc1f;
+const Di=({n,s=22,c='currentColor',style})=><i aria-hidden="true" style={{display:'inline-block',width:s,height:s,background:c,WebkitMask:`url('../../assets/icons/${n}.svg') center/contain no-repeat`,mask:`url('../../assets/icons/${n}.svg') center/contain no-repeat`,flex:'none',...style}}></i>;
+const Wordmark=({color='var(--violet-600)',size=24})=><span style={{fontFamily:'var(--font-display)',fontWeight:800,fontSize:size,letterSpacing:'-0.04em',color,lineHeight:1}}>axelerate</span>;
+const Mono=({children,color='var(--gray-500)'}) =><span style={{fontFamily:'var(--font-label)',fontSize:11,fontWeight:500,letterSpacing:'0.06em',color}}>{children}</span>;
+
+function Nav({onInvite}){
+  return <div style={{background:'rgba(251,250,255,.85)',backdropFilter:'blur(10px)',borderBottom:'1px solid var(--border-subtle)',position:'sticky',top:0,zIndex:50}}>
+    <div className="wrap" style={{display:'flex',alignItems:'center',gap:28,height:64}}>
+      <a href="#" style={{textDecoration:'none'}}><Wordmark/></a>
+      <nav style={{display:'flex',gap:22,marginLeft:8}}>
+        {['Rooms','Membership','Stories'].map(l=><a key={l} href="#" style={{textDecoration:'none',color:'var(--text-secondary)',fontSize:14,fontWeight:500}}>{l}</a>)}
+      </nav>
+      <div style={{marginLeft:'auto',display:'flex',gap:8,alignItems:'center'}}>
+        <Button variant="ghost" size="sm">Sign in</Button>
+        <Button size="sm" onClick={onInvite}>Request invite</Button>
+      </div>
+    </div>
+  </div>;
+}
+
+function Hero({onInvite}){
+  return <div className="ax-grid-paper"><div className="wrap" style={{padding:'72px 24px 64px',display:'flex',flexDirection:'column',alignItems:'center',textAlign:'center',gap:22}}>
+    <span style={{transform:'rotate(-2deg)',display:'inline-flex'}}><Badge tone="yellow" tilt={-2}>Now seating the fall cohort</Badge></span>
+    <h1 style={{margin:0,maxWidth:820,position:'relative',fontFamily:'var(--font-display)',fontSize:'var(--text-5xl)',fontWeight:800,letterSpacing:'var(--tracking-tighter)',lineHeight:'var(--leading-tight)'}}>
+      The <span style={{background:"url('../../assets/doodles/circle-violet.svg') no-repeat center/100% 100%",padding:'16px 36px',margin:'0 -30px'}}>inside track</span> for people who build.
+      <img src="../../assets/doodles/sparkle-butter.svg" alt="" style={{position:'absolute',top:-24,right:-10,width:38,transform:'rotate(12deg)'}}/>
+    </h1>
+    <p style={{margin:0,maxWidth:560,fontSize:18,lineHeight:'var(--leading-normal)',color:'var(--text-secondary)'}}>
+      Axelerate is an invite-only network where founders, operators, and backers skip the small talk and move — together, faster.
+    </p>
+    <div style={{display:'flex',gap:12,marginTop:6,alignItems:'center'}}>
+      <Button variant="yellow" size="lg" onClick={onInvite}>Request invite<Di n="arrow-right" s={18}/></Button>
+      <Button variant="secondary" size="lg">See how it works</Button>
+      <span style={{fontFamily:'var(--font-hand)',fontSize:22,fontWeight:600,color:'var(--violet-700)',transform:'rotate(-3deg)',marginLeft:6}}>← takes 2 min, promise</span>
+    </div>
+    <div style={{display:'flex',gap:52,marginTop:26,flexWrap:'wrap',justifyContent:'center',textAlign:'left'}}>
+      <StatBlock figure="2,400" label="Members" note="and climbing"/>
+      <StatBlock figure="12" label="Rooms this month"><TallyCount count={12} color="violet" height={28}/></StatBlock>
+      <StatBlock figure="38" label="Cities" note="9 added this year"><TallyCount count={9} color="orange" height={28} label="9 cities added this year"/></StatBlock>
+      <StatBlock figure="Zero" label="Pitch decks at dinner"/>
+    </div>
+  </div></div>;
+}
+
+function Collage(){
+  const shots=[{id:'polaroid-1',cap:'dinner #41',r:-3},{id:'polaroid-2',cap:'the shanghai room',r:2},{id:'polaroid-3',cap:'demo day, 9am',r:-1.5}];
+  return <div className="wrap" style={{padding:'0 24px 72px',display:'flex',flexDirection:'column',alignItems:'center',gap:18}}>
+    <Mono>FROM THE ROOMS</Mono>
+    <div style={{display:'flex',gap:30,justifyContent:'center',alignItems:'flex-start'}}>
+      {shots.map((s,i)=><div key={s.id} style={{position:'relative',transform:`rotate(${s.r}deg)`,background:'#fff',border:'1px solid var(--border-default)',borderRadius:6,padding:'10px 10px 4px',boxShadow:'var(--shadow-hand)'}}>
+        {i===1&&<span style={{position:'absolute',top:-14,right:-16,zIndex:2}}><Sticker tone="orange" round size={46}><img src="../../assets/icons/heart.svg" width="22" height="22" alt="" style={{filter:'brightness(0) invert(1)'}}/></Sticker></span>}
+        <div style={{width:210,height:158,overflow:'hidden',borderRadius:3,background:'var(--gray-100)'}}><image-slot id={s.id} shape="rect" placeholder={'drop a photo \u2014 '+s.cap}></image-slot></div>
+        <p style={{margin:'6px 2px 2px',fontFamily:'var(--font-hand)',fontSize:21,color:'var(--gray-700)'}}>{s.cap}</p>
+      </div>)}
+    </div>
+  </div>;
+}
+
+function Features(){
+  const F=[{tint:'violet',tab:'01',t:'Rooms',d:['Eight seats, one topic','Hand-seated every time','Zero lurkers, zero decks'],tilt:-3,mt:0},
+    {tint:'cyan',tab:'02',t:'Intros',d:['Warm paths to 2,400','12 min median reply','Ask before lunch, call by Friday'],tilt:2,mt:14},
+    {tint:'coral',tab:'03',t:'Dinners',d:['38 cities, monthly','Members host','Bring one friend'],tilt:-1.5,mt:4},
+    {tint:'orange',tab:'04',t:'The vault',d:['Teardowns and templates','Warm lists, kept current','Everything members share'],tilt:2.5,mt:18},
+    {tint:'lilac',tab:'05',t:'With partners',d:['Legal, finance, recruiting','Vetted by members','No referral fees'],tilt:-2,mt:8}];
+  return <div style={{background:'var(--surface-quiet)'}}>
+    <div className="wrap" style={{padding:'64px 24px 76px'}}>
+      <h2 style={{margin:'0 0 8px',textAlign:'center',fontFamily:'var(--font-display)',fontSize:'var(--text-4xl)',fontWeight:800,letterSpacing:'var(--tracking-tighter)'}}>Open the folder you need</h2>
+      <p style={{margin:'0 auto 44px',maxWidth:460,textAlign:'center',fontSize:15.5,color:'var(--text-secondary)'}}>Five things every member gets on day one.</p>
+      <div style={{display:'flex',justifyContent:'center',alignItems:'flex-start'}}>
+        {F.map((f,i)=><FileCard key={f.t} tint={f.tint} tab={f.tab} title={f.t} items={f.d} tilt={f.tilt}
+          style={{width:186,marginLeft:i?-18:0,marginTop:f.mt,zIndex:i}}/>)}
+      </div>
+    </div>
+  </div>;
+}
+
+function Voices(){
+  const V=[{tone:'cyan',tail:'bl',who:'Mara · seed founder',q:'Two intros in one week. Both closed.',tilt:-1},
+    {tone:'butter',tail:'br',who:'Dev · ops lead',q:'Nobody pitched me at dinner. Refreshing.',tilt:1},
+    {tone:'lilac',tail:'bl',who:'Ines · partner',q:'I meet builders as peers here, not as pipeline.',tilt:-.5},
+    {tone:'ink',tail:'br',who:'Sam · second-time founder',q:'The war-room channel saved my quarter.',tilt:1.5}];
+  return <div className="wrap" style={{padding:'8px 24px 72px'}}>
+    <div style={{display:'flex',alignItems:'center',gap:14,marginBottom:26}}>
+      <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-3xl)',fontWeight:800,letterSpacing:'var(--tracking-tighter)'}}>What members say</h2>
+      <Sticker tone="yellow" tilt={-7}>unedited</Sticker>
+    </div>
+    <div style={{display:'flex',gap:22,flexWrap:'wrap',alignItems:'flex-start'}}>
+      {V.map(v=><Bubble key={v.who} tone={v.tone} tail={v.tail} who={v.who} tilt={v.tilt} style={{maxWidth:236}}>{v.q}</Bubble>)}
+      <StickyNote tint="yellow" tape heading="say hi first" label="house rule" tilt={-3} style={{width:158,marginTop:6}}>Everyone answers a first message. It is the whole deal.</StickyNote>
+    </div>
+  </div>;
+}
+
+function WhoFor(){
+  const [tab,setTab]=React.useState('founders');
+  const C={founders:{h:'Stop pitching. Start comparing notes.',lines:['Dinners with founders one stage ahead of you','Backer intros only when you ask for them','A war-room channel for the week everything breaks']},
+    operators:{h:'Your next role finds you here.',lines:['Rooms sorted by craft, not job title','Trade playbooks with people who shipped it','Advisory seats before they hit a job board']},
+    backers:{h:'See it before the deck exists.',lines:['Meet builders as peers, not pipeline','Rooms are pitch-free — trust compounds first','When members raise, members hear first']}};
+  const c=C[tab];
+  return <div className="wrap" style={{padding:'0 24px 72px'}}>
+    <Tabs items={[{id:'founders',label:'For founders'},{id:'operators',label:'For operators'},{id:'backers',label:'For backers'}]} value={tab} onChange={setTab}/>
+    <Card padding="lg" style={{marginTop:0,borderRadius:'var(--radius-hand)',borderTopLeftRadius:0,borderTopRightRadius:0,display:'grid',gridTemplateColumns:'1fr 1fr',gap:24,alignItems:'center'}}>
+      <h3 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-2xl)',fontWeight:800,letterSpacing:'var(--tracking-tight)',lineHeight:'var(--leading-snug)'}}>{c.h}</h3>
+      <div style={{display:'flex',gap:16,alignItems:'flex-start'}}>
+        <Illustration tier="mini" glyph={tab==='founders'?'rocket':tab==='operators'?'checklist':'trend-up'} glyphBase="../../assets/icons" blob={tab==='founders'?'lilac':tab==='operators'?'cyan':'orange'} alt="" size={82}/>
+        <ul style={{margin:0,padding:0,listStyle:'none',display:'flex',flexDirection:'column',gap:10,flex:1}}>
+        {c.lines.map(l=><li key={l} style={{display:'flex',gap:10,alignItems:'flex-start',fontSize:14.5,lineHeight:1.5,color:'var(--text-secondary)'}}><Di n="tick" s={16} c="var(--violet-600)" style={{marginTop:3}}/>{l}</li>)}
+        </ul>
+      </div>
+    </Card>
+  </div>;
+}
+
+function Pricing({onInvite}){
+  const [pace,setPace]=React.useState('Monthly');
+  const yr=pace==='Yearly';
+  const T=[{n:'Guest',p:'$0',cap:'Taste the pace',feats:['1 open room per month','Public stories & teardowns','Waitlist for dinners'],cta:'Start free',v:'secondary'},
+    {n:'Member',p:yr?'$41':'$49',cap:'The full lane',feats:['Every room, every city','Intro requests — 3 live at a time','Member directory & DMs','Dinner seats'],cta:'Request invite',v:'primary',pop:true},
+    {n:'Circle',p:yr?'$124':'$149',cap:'For the deep end',feats:['Everything in Member','Off-record circles of 8','First call on advisory seats','Bring a +1 to any dinner'],cta:'Talk to us',v:'secondary'}];
+  return <div className="wrap" style={{padding:'0 24px 80px',display:'flex',flexDirection:'column',alignItems:'center',gap:26}}>
+    <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-3xl)',fontWeight:800,letterSpacing:'var(--tracking-tight)'}}>Membership</h2>
+    <div style={{display:'flex',alignItems:'center',gap:12}}>
+      <Tabs variant="pill" items={['Monthly','Yearly']} value={pace} onChange={setPace}/>
+      <Badge tone="yellow" tilt={-4}>Yearly = 2 months free</Badge>
+    </div>
+    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:16,width:'100%',alignItems:'stretch'}}>
+      {T.map((t,i)=><Card key={t.n} padding="lg" tint={t.pop?'violet':undefined} variant={t.pop?'tint':'sheet'} tilt={i===0?-1.5:i===2?1.5:0} scribble={t.pop?'✓':undefined} style={{position:'relative'}}>
+        {t.pop&&<span style={{position:'absolute',top:-13,left:24}}><Badge tone="yellow" tilt={-4}>Most loved</Badge></span>}
+        <h3 style={{margin:0,fontFamily:'var(--font-display)',fontSize:18,fontWeight:700}}>{t.n}</h3>
+        <p style={{margin:'2px 0 0',fontSize:13,color:t.pop?'rgba(255,255,255,.72)':'var(--text-muted)'}}>{t.cap}</p>
+        <p style={{margin:'14px 0 2px',fontFamily:'var(--font-display)',fontSize:38,fontWeight:800,letterSpacing:'-0.03em'}}>{t.p}<span style={{fontSize:14,fontWeight:500,color:t.pop?'rgba(255,255,255,.72)':'var(--text-muted)',fontFamily:'var(--font-body)'}}> /mo</span></p>
+        <ul style={{margin:'14px 0 20px',padding:0,listStyle:'none',display:'flex',flexDirection:'column',gap:8}}>
+          {t.feats.map(f=><li key={f} style={{display:'flex',gap:9,fontSize:13.5,color:t.pop?'rgba(255,255,255,.86)':'var(--text-secondary)'}}><Di n="tick" s={14} c={t.pop?'var(--butter-300)':'var(--violet-600)'} style={{marginTop:2}}/>{f}</li>)}
+        </ul>
+        <Button variant={t.v} fullWidth onClick={onInvite}>{t.cta}</Button>
+      </Card>)}
+    </div>
+  </div>;
+}
+
+function Band({onInvite}){
+  return <div style={{backgroundColor:'var(--surface-brand)'}}>
+    <div className="wrap" style={{padding:'64px 24px',display:'flex',alignItems:'center',gap:24,flexWrap:'wrap'}}>
+      <div style={{flex:1,minWidth:300}}>
+        <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-4xl)',fontWeight:800,letterSpacing:'var(--tracking-tighter)',color:'var(--text-on-brand)',lineHeight:'var(--leading-tight)'}}>Ready to <span style={{background:'var(--scribble-butter) no-repeat left bottom/100% 8px',paddingBottom:4}}>move?</span></h2>
+        <p style={{margin:'10px 0 0',fontSize:16,color:'#DCCBFF'}}>We read every request within the week. Usually much faster.</p>
+      </div>
+      <div style={{display:'flex',flexDirection:'column',gap:14,alignItems:'flex-end',minWidth:250}}>
+        <Button variant="yellow" size="lg" onClick={onInvite}>Request invite<Di n="arrow-right" s={18}/></Button>
+        <MarkerBar label="" figure="" value={62} color="yellow" ticks={20} height={24} inverse style={{width:250}}/>
+        <Mono color="#DCCBFF">62 / 100 FALL SEATS CLAIMED</Mono>
+      </div>
+    </div>
+  </div>;
+}
+
+function Footer(){
+  return <div style={{background:'var(--surface-inverse)'}}>
+    <div className="wrap" style={{padding:'40px 24px',display:'flex',alignItems:'center',gap:24,flexWrap:'wrap'}}>
+      <Wordmark color="#fff" size={20}/>
+      <nav style={{display:'flex',gap:18}}>
+        {['Rooms','Membership','Stories','Code of speed'].map(l=><a key={l} href="#" style={{textDecoration:'none',color:'var(--text-inverse-secondary)',fontSize:13}}>{l}</a>)}
+      </nav>
+      <span style={{marginLeft:'auto'}}><Mono color="var(--gray-500)">© 2026 AXELERATE · BUILT FOR SPEED</Mono></span>
+    </div>
+  </div>;
+}
+
+function App(){
+  const [open,setOpen]=React.useState(false);
+  const [toast,setToast]=React.useState(null);
+  const [email,setEmail]=React.useState('');
+  const [err,setErr]=React.useState('');
+  const send=()=>{
+    if(!email.includes('@')){setErr('We need a real one.');return;}
+    setErr('');setOpen(false);setEmail('');
+    setToast({tone:'success',title:"You're in the queue.",description:'We move fast — expect a reply this week.'});
+    setTimeout(()=>setToast(null),4500);
+  };
+  return <div>
+    <Nav onInvite={()=>setOpen(true)}/>
+    <Hero onInvite={()=>setOpen(true)}/>
+    <Features/>
+    <Collage/>
+    <Voices/>
+    <WhoFor/>
+    <Pricing onInvite={()=>setOpen(true)}/>
+    <Band onInvite={()=>setOpen(true)}/>
+    <Footer/>
+    <Dialog open={open} onClose={()=>setOpen(false)} title="Request an invite" width={430}
+      footer={<><Button variant="ghost" onClick={()=>setOpen(false)}>Not yet</Button><Button onClick={send}>Send it<Di n="send-2" s={16}/></Button></>}>
+      <div style={{display:'flex',flexDirection:'column',gap:14}}>
+        <Input label="Name" placeholder="First and last"/>
+        <Input label="Work email" placeholder="you@company.com" value={email} onChange={e=>setEmail(e.target.value)} error={err} hint={err?undefined:'We reply within the week.'}/>
+        <Select label="You are a…" options={['Founder','Operator','Backer','Something better']}/>
+        <Input label="What are you building?" placeholder="One line is plenty"/>
+        <Checkbox label="A member referred me" />
+      </div>
+    </Dialog>
+    {toast&&<div style={{position:'fixed',right:24,bottom:24,zIndex:200}}><Toast tone={toast.tone} title={toast.title} description={toast.description} onDismiss={()=>setToast(null)}/></div>}
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>

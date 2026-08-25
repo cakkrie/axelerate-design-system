@@ -1,0 +1,10 @@
+:root{
+--font-display:'Bricolage Grotesque','Instrument Sans',system-ui,sans-serif;
+--font-body:'Instrument Sans',system-ui,-apple-system,sans-serif;
+--font-label:'Gabarito','Instrument Sans',system-ui,sans-serif;
+--font-hand:'Lacquer','Bricolage Grotesque',cursive;
+--text-xs:12px;--text-sm:14px;--text-md:16px;--text-lg:18px;--text-xl:22px;--text-2xl:28px;--text-3xl:36px;--text-4xl:46px;--text-5xl:60px;--text-6xl:80px;
+--leading-tight:1.02;--leading-snug:1.15;--leading-normal:1.55;
+--tracking-tighter:-0.035em;--tracking-tight:-0.02em;--tracking-caps:0.09em;
+--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;--weight-extrabold:800;--weight-black:800;
+}

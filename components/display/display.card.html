@@ -1,0 +1,36 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Display" subtitle="Card (tinted, tilted, punched), Badge, Tag" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body style="padding:20px 22px">
+<div id="root"></div>
+<script type="text/babel">
+const {Card,Badge,Tag}=window.AxelerateDesignSystem_edbc1f;
+const H=({children,style})=><h4 style={{margin:'0 0 6px',font:'700 15px var(--font-display)',letterSpacing:'-0.01em',...style}}>{children}</h4>;
+const T=({children,c})=><p style={{margin:0,font:'400 12.5px/1.5 var(--font-body)',color:c||'var(--text-secondary)'}}>{children}</p>;
+ReactDOM.createRoot(document.getElementById('root')).render(
+<div style={{display:'flex',flexDirection:'column',gap:16}}>
+  <div style={{display:'flex',alignItems:'flex-start',paddingTop:14}}>
+    <Card padding="sm" tint="violet" tilt={-3} scribble="01" style={{width:150,zIndex:4}}><H style={{color:'#fff'}}>Rooms</H><T c="#fff">Eight seats, one topic.</T></Card>
+    <Card padding="sm" tint="cyan" tilt={2} scribble="02" style={{width:150,marginLeft:-14,marginTop:12,zIndex:3}}><H>Intros</H><T c="rgba(23,16,41,.72)">Warm paths only.</T></Card>
+    <Card padding="sm" tint="coral" tilt={-1.5} scribble="03" style={{width:150,marginLeft:-14,zIndex:2}}><H style={{color:'#fff'}}>Dinners</H><T c="rgba(255,255,255,.82)">38 cities, monthly.</T></Card>
+    <Card padding="sm" punch style={{width:150,marginLeft:-14,marginTop:10,zIndex:1}}><H>Filed away</H><T>Punched sheet.</T></Card>
+  </div>
+  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}}>
+    <Card padding="sm" variant="quiet"><H>Quiet</H><T>Warm near-white.</T></Card>
+    <Card padding="sm" variant="sketch"><H>Sketch</H><T>Dashed empty slot.</T></Card>
+    <Card padding="sm" interactive><H>Interactive</H><T>hover — lifts + tilts</T></Card>
+  </div>
+  <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center'}}>
+    <Badge>Member</Badge><Badge tone="yellow">Most loved</Badge><Badge tone="cyan">Rooms</Badge><Badge tone="coral">Dinners</Badge><Badge tone="teal">Partners</Badge>
+    <span style={{width:14}}></span>
+    <Badge tone="neutral">Draft</Badge><Badge tone="success">Live</Badge><Badge tone="warning">Waitlist</Badge><Badge tone="danger">Closed</Badge>
+  </div>
+  <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center'}}>
+    <Tag>Fintech</Tag><Tag tone="cyan">Climate</Tag><Tag tone="coral">Hardware</Tag><Tag tone="navy">Design</Tag><Tag tone="yellow">Ops</Tag><Tag tone="teal">Health</Tag><Tag selected>Selected</Tag><Tag tone="coral" onRemove={()=>{}}>Removable</Tag>
+  </div>
+</div>);
+</script></body></html>

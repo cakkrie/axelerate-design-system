@@ -1,0 +1,14 @@
+<!-- @dsCard group="Colors" viewport="700x190" name="Surfaces & text" subtitle="Page, card, sunken, brand, ink — with their text pairings" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>
+body{padding:16px;box-sizing:border-box;display:flex;gap:12px;background:var(--surface-card)}
+.tile{flex:1;border-radius:var(--radius-hand-sm);padding:14px;display:flex;flex-direction:column;gap:3px}
+.tile b{font:600 13px var(--font-body)}
+.tile span{font:400 11.5px var(--font-body)}
+.tile i{font-style:normal;font-family:var(--font-label);font-size:9px;margin-top:auto;padding-top:10px;opacity:.6}
+</style></head><body>
+<div class="tile" style="background:var(--surface-page);border:1.5px dashed var(--border-default)"><b style="color:var(--text-primary)">Page</b><span style="color:var(--text-secondary)">Secondary text</span><span style="color:var(--text-muted)">Muted text</span><i style="color:var(--gray-600)">--surface-page · FFF</i></div>
+<div class="tile" style="background:var(--surface-card);box-shadow:var(--shadow-paper)"><b style="color:var(--text-primary)">Card</b><span style="color:var(--text-secondary)">Secondary text</span><span style="color:var(--text-brand)">Brand text</span><i style="color:var(--gray-600)">--surface-card</i></div>
+<div class="tile" style="background:var(--surface-quiet)"><b style="color:var(--text-primary)">Quiet</b><span style="color:var(--gray-700)">Tabs, toasts, wells</span><i style="color:var(--gray-600)">--surface-quiet · F8F7F4</i></div>
+<div class="tile" style="background:var(--surface-brand)"><b style="color:var(--text-on-brand)">Brand</b><span style="color:#DCCBFF">Violet moments &amp; bands</span><i style="color:#C2A4FF">--surface-brand</i></div><div class="tile" style="background:var(--surface-inverse)"><b style="color:var(--text-inverse)">Ink</b><span style="color:var(--text-inverse-secondary)">Footers, hero panels</span><span style="color:var(--butter-400)">Volt pops here</span><i style="color:var(--gray-500)">--surface-inverse</i></div>
+</body></html>

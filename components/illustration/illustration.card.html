@@ -1,0 +1,36 @@
+<!-- @dsCard group="Components" viewport="700x330" name="Illustration" subtitle="Three tiers — mini, spot, hero — ink line art on an accent blob" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{padding:22px;box-sizing:border-box;background:var(--surface-card)}
+.cap{font:600 10px var(--font-label);letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)}
+.hand{font:600 17px var(--font-hand);color:var(--gray-600)}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { Illustration } = window.AxelerateDesignSystem_edbc1f;
+const B="../../assets/icons";
+function Demo(){
+  return <div style={{display:'flex',gap:26,alignItems:'flex-start'}}>
+    <div style={{display:'flex',flexDirection:'column',gap:10}}>
+      <span className="cap">Mini · 96 · real today</span>
+      <div style={{display:'flex',gap:10}}>
+        <Illustration tier="mini" glyph="coffee-cup-2" glyphBase={B} blob="lilac" alt="A room of eight"/>
+        <Illustration tier="mini" glyph="magic-wand" glyphBase={B} blob="yellow" tilt={5} alt="Intro magic"/>
+        <Illustration tier="mini" glyph="rocket" glyphBase={B} blob="coral" tilt={-9} alt="Launch"/>
+      </div>
+      <span className="hand">doodle icons promoted to illustration size</span>
+      <span className="cap" style={{marginTop:6}}>Spot · 220 · placeholder</span>
+      <Illustration tier="spot" label="Two hands passing a folded note across a table"/>
+    </div>
+    <div style={{display:'flex',flexDirection:'column',gap:10}}>
+      <span className="cap">Hero · 520 · placeholder</span>
+      <Illustration tier="hero" size={330} label="Eight people around one table, seen from above — laptops, cups, notes"/>
+      <span className="hand">real hero + spot art still to be commissioned →</span>
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

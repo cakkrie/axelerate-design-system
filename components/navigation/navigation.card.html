@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components" viewport="700x230" name="Navigation" subtitle="Tabs in core colours — folder (default), underline, pill. Click them." -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body style="padding:20px 22px">
+<div id="root"></div>
+<script type="text/babel">
+const {Tabs,Card}=window.AxelerateDesignSystem_edbc1f;
+function Demo(){
+  const [a,setA]=React.useState('founders');
+  const [b,setB]=React.useState('Monthly');
+  const [c,setC]=React.useState('rooms');
+  return <div style={{display:'flex',flexDirection:'column',gap:18}}>
+    <div>
+      <Tabs items={[{id:'founders',label:'For founders'},{id:'operators',label:'For operators'},{id:'backers',label:'For backers'},{id:'partners',label:'Partners'}]} value={a} onChange={setA}/>
+      <Card padding="sm" style={{borderRadius:'var(--radius-hand)',borderTopLeftRadius:0,borderTopRightRadius:0,font:'400 13px var(--font-body)',color:'var(--gray-700)'}}>Navigation stays core — purple active, quiet grey resting. Accents belong to paper objects, never to nav chrome.</Card>
+    </div>
+    <div style={{display:'flex',gap:26,alignItems:'center'}}>
+      <Tabs variant="underline" items={[{id:'rooms',label:'Rooms'},{id:'people',label:'People'},{id:'files',label:'Files'}]} value={c} onChange={setC}/>
+      <Tabs variant="pill" items={['Monthly','Yearly']} value={b} onChange={setB}/>
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

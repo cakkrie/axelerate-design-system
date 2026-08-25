@@ -1,0 +1,14 @@
+<!-- @dsCard group="Colors" viewport="700x160" name="Semantic" subtitle="States as paper chips — dot sticker, handwritten aside" -->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>
+body{padding:20px 22px;box-sizing:border-box;display:flex;gap:14px;align-items:center;background:var(--surface-card)}
+.s{flex:1;background:var(--surface-card);border-radius:var(--radius-hand-sm);box-shadow:var(--shadow-paper);padding:14px 15px;display:flex;flex-direction:column;gap:8px}
+.t{display:flex;align-items:center;gap:9px;font:700 15px var(--font-display);letter-spacing:-.01em;color:var(--text-primary)}
+.dot{width:12px;height:12px;border-radius:50%;flex:none;box-shadow:0 0 0 2.5px var(--gray-0),1.5px 2px 0 rgba(23,16,41,.12)}
+.chip{align-self:flex-start;padding:3px 11px;border-radius:8px 10px 7px 11px/10px 8px 11px 7px;font:600 12.5px var(--font-body)}
+.note{font:400 15px var(--font-hand);color:var(--gray-600)}
+</style></head><body>
+<div class="s"><span class="t"><span class="dot" style="background:var(--green-500)"></span>Success</span><span class="chip" style="background:var(--success-bg);color:var(--success-fg)">You're in</span><span class="note">it worked — say so warmly</span></div>
+<div class="s"><span class="t"><span class="dot" style="background:var(--amber-500)"></span>Warning</span><span class="chip" style="background:var(--warning-bg);color:var(--warning-fg)">Waitlisted</span><span class="note">not a no, just a wait</span></div>
+<div class="s"><span class="t"><span class="dot" style="background:var(--red-500)"></span>Danger</span><span class="chip" style="background:var(--danger-bg);color:var(--danger-fg)">Seats gone</span><span class="note">own it, offer a way out</span></div>
+</body></html>
