@@ -1,5 +1,12 @@
 # Axelerate Design System
 
+> **You're reading `.github/README.md`.** On macOS the filesystem is
+> case-insensitive, so the frozen bundle file `readme.md` occupies the root
+> `README.md` path — `ls` at the repo root shows only `readme.md`, and
+> `cat README.md` returns the brand spec, not this document. GitHub resolves
+> `.github/README.md` ahead of the root file, so this is what renders on the
+> repo homepage even though it's invisible locally unless you look here.
+
 Brand design system for **Axelerate** — an invite-only business network. Tokens,
 22 React components, hand-drawn icons, and 33 live specimen cards.
 
@@ -45,6 +52,14 @@ never read.
 Each component injects its own `<style>` tag on import. `package.json` marks the
 package `sideEffects`-ful so bundlers don't tree-shake that CSS away.
 
+`Illustration`'s `glyph` prop resolves against a `glyphBase` that **defaults to
+the document-relative path `assets/icons`** — this is frozen bundle behaviour
+inherited from the export, not something this repo controls. In a consumer app
+that default almost never matches where `assets/icons` actually lands, so
+`<Illustration glyph="…"/>` silently renders nothing until you pass `glyphBase`
+explicitly, e.g. `glyphBase={new URL('axelerate-design-system/assets/icons', import.meta.url).pathname}`
+or a path/CDN URL your bundler serves `assets/` from.
+
 ## Browse it
 
 ```bash
@@ -60,9 +75,14 @@ network connection.
 | --- | --- |
 | `npm run validate` | Integrity checks — manifest, barrel, exports, `@dsCard` headers, asset refs, token resolution |
 | `npm run docs` | Regenerates `docs/index.html`. **Never hand-edit that file.** |
-| `npm run lint` | Brand-adherence lint via the bundle's own `_adherence.oxlintrc.json` |
+| `npm run lint` | Runs `_adherence.oxlintrc.json` via `npx --yes oxlint@1.33.0`. Only one of its three rules actually fires. |
 
-CI runs all three on every push to `main`.
+CI runs all three on every push to `main`, but `npm run lint` is informational, not a gate:
+only `no-restricted-imports` (deep imports of component internals instead of `index.js`)
+actually flags anything. `no-restricted-syntax` (raw hex literals) is not implemented by
+any oxlint version and enforces nothing — `_ds_bundle.js` has 43 raw hex values and 151
+`px` literals and triggers zero warnings from it. `react/forbid-elements` ships `forbid: []`
+and is inert by construction.
 
 ## What's in here
 

@@ -13,11 +13,19 @@
     "./assets/*": "./assets/*"
   },
   "sideEffects": ["*.css", "./components/**/*.jsx"],
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "styles.css",
+    "tokens/",
+    "components/",
+    "assets/"
+  ],
   "peerDependencies": { "react": ">=18" },
   "scripts": {
     "validate": "node scripts/validate.mjs",
     "docs": "node scripts/build-docs.mjs",
-    "lint": "oxlint --config _adherence.oxlintrc.json ."
+    "lint": "npx --yes oxlint@1.33.0 --config _adherence.oxlintrc.json ."
   },
   "engines": { "node": ">=20" }
 }

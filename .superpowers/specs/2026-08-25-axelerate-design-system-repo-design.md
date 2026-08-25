@@ -194,5 +194,7 @@ missing component.
 
 `readme.md` is a bundle file and the frozen-layout rule forbids editing it. The
 correction is recorded here and in the repo README instead. Validation check #2
-asserts 22, so if a 23rd component is ever added the barrel and manifest must move
-together.
+doesn't pin the literal number 22 — it asserts set equality between
+`_ds_manifest.json` and the barrel (`index.js`/`index.d.ts`), which is strictly
+better: if a 23rd component is ever added, the check still passes as long as the
+manifest and barrel move together.
