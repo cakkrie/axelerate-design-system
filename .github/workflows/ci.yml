@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Integrity checks
+        run: node scripts/validate.mjs
+
+      - name: Docs are up to date
+        run: |
+          node scripts/build-docs.mjs
+          git diff --exit-code docs/index.html \
+            || { echo '::error::docs/index.html is stale — run `npm run docs` and commit'; exit 1; }
+
+      - name: Brand adherence lint
+        continue-on-error: true
+        # Pinned to 1.33.0, not the floating `1` tag: oxlint >=1.34 hard-fails
+        # config parsing on any unrecognized top-level key, and
+        # _adherence.oxlintrc.json carries a non-standard `x-omelette` key that
+        # must not be edited (frozen bundle layout). 1.33.0 is the newest
+        # release that still tolerates it, so pin there instead of crashing.
+        run: npx --yes oxlint@1.33.0 --config _adherence.oxlintrc.json .

@@ -1,0 +1,36 @@
+name: Deploy gallery to Pages
+
+# Manual dispatch only. GitHub Pages does not serve private repos on the free
+# plan, so a push trigger would fail on every commit. Add:
+#   push: { branches: [main] }
+# once this repo is public or the account is on Pro/Team/Enterprise.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+
+      # Upload the repo root, not docs/ — the gallery iframes ../guidelines/…,
+      # ../components/…, and ../ui_kits/… so those paths must be inside the artifact.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
