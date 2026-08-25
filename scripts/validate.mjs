@@ -102,13 +102,30 @@ const USE = /var\(\s*--([A-Za-z0-9-]+)\s*(,)?/g;
 // consumers set `--icon` inline; nothing in the bundle itself needs to.
 const UTILITY_PARAMS = new Set(['icon']);
 
+// Comments can contain a token name in *prose* — a doc snippet like
+// `{"--fake-widget": "1px solid red"}` illustrating the style-object
+// idiom — which the quoted-key branch of DEF would otherwise read as a
+// real local definition, masking a genuinely broken var(--fake-widget)
+// use next to it. Strip comments before collecting local definitions so
+// only live code can satisfy a use. Strips /* ... */ (CSS and JS/JSX
+// block comments) and <!-- ... --> (HTML); deliberately does NOT strip
+// `//` line comments — `//` isn't a comment in CSS, and stripping it
+// would also eat the `//` in every `https://` URL in the bundle.
+// Residual gap: a quoted key inside an actual string literal (not a
+// comment) is still indistinguishable from a real definition — closing
+// that would need a JS parser, which this script deliberately doesn't
+// have (zero dependencies). Applied only to the local-definition scan
+// below; a var() use inside a comment is harmless either way, so the use
+// scan still runs against the raw source.
+const stripComments = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/<!--[\s\S]*?-->/g, '');
+
 const globalTokens = new Set();
 for (const p of walk(join(ROOT, 'tokens'), (f) => f.endsWith('.css'))) {
   for (const m of readFileSync(p, 'utf8').matchAll(DEF)) globalTokens.add(m[1]);
 }
 for (const p of scanned) {
   const src = readFileSync(p, 'utf8');
-  const local = new Set([...src.matchAll(DEF)].map((m) => m[1]));
+  const local = new Set([...stripComments(src).matchAll(DEF)].map((m) => m[1]));
   for (const m of src.matchAll(USE)) {
     const [, name, hasFallback] = m;
     if (hasFallback) continue;
