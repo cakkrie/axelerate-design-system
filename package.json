@@ -1,0 +1,23 @@
+{
+  "name": "axelerate-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Axelerate brand design system — tokens, 22 React components, hand-drawn icons, and specimen cards.",
+  "type": "module",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": { "types": "./index.d.ts", "default": "./index.js" },
+    "./styles.css": "./styles.css",
+    "./tokens/*": "./tokens/*",
+    "./components/*": "./components/*",
+    "./assets/*": "./assets/*"
+  },
+  "sideEffects": ["*.css", "./components/**/*.jsx"],
+  "peerDependencies": { "react": ">=18" },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "docs": "node scripts/build-docs.mjs",
+    "lint": "oxlint --config _adherence.oxlintrc.json ."
+  },
+  "engines": { "node": ">=20" }
+}

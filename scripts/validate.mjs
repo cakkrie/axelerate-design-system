@@ -42,6 +42,47 @@ for (const p of walk(join(ROOT, 'components'), (f) => f.endsWith('.jsx'))) {
   }
 }
 
+// ---- 2. barrel agreement -------------------------------------------------
+const manifestNames = manifest.components.map((c) => c.name);
+const barrel = readFileSync(join(ROOT, 'index.js'), 'utf8');
+const barrelPairs = [...barrel.matchAll(/export\s*\{\s*([A-Za-z0-9_]+)\s*\}\s*from\s*'([^']+)'/g)]
+  .map((m) => ({ name: m[1], path: m[2].replace(/^\.\//, '') }));
+const barrelNames = barrelPairs.map((p) => p.name);
+for (const n of manifestNames) {
+  if (!barrelNames.includes(n)) fail('barrel', `index.js does not export ${n}`);
+}
+for (const n of barrelNames) {
+  if (!manifestNames.includes(n)) fail('barrel', `index.js exports ${n}, which is not in the manifest`);
+}
+for (const { name, path } of barrelPairs) {
+  const expected = manifest.components.find((c) => c.name === name)?.sourcePath;
+  if (expected && path !== expected) {
+    fail('barrel', `index.js exports ${name} from ${path}, manifest says ${expected}`);
+  }
+}
+const types = readFileSync(join(ROOT, 'index.d.ts'), 'utf8');
+const typePaths = [...types.matchAll(/export\s*\*\s*from\s*'([^']+)'/g)].map((m) => m[1].replace(/^\.\//, ''));
+for (const c of manifest.components) {
+  const want = c.sourcePath.replace(/\.jsx$/, '');
+  if (!typePaths.includes(want)) fail('barrel', `index.d.ts does not re-export ${want}`);
+}
+if (typePaths.length !== manifestNames.length) {
+  fail('barrel', `index.d.ts has ${typePaths.length} re-exports, expected ${manifestNames.length}`);
+}
+
+// ---- 6. package exports resolve -----------------------------------------
+const pkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'));
+for (const [key, val] of Object.entries(pkg.exports ?? {})) {
+  for (const t of typeof val === 'string' ? [val] : Object.values(val)) {
+    if (t.includes('*')) {
+      const dir = join(ROOT, t.split('*')[0]);
+      if (!existsSync(dir)) fail('exports', `"${key}" → ${t} points at missing directory ${rel(dir)}`);
+    } else if (!existsSync(join(ROOT, t))) {
+      fail('exports', `"${key}" → ${t} does not exist`);
+    }
+  }
+}
+
 // ---- 3. specimen card headers -------------------------------------------
 const cardFiles = [
   ...walk(join(ROOT, 'guidelines'), (p) => p.endsWith('.html')),
