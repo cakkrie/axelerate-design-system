@@ -7,4 +7,4 @@ Pill action button — the default interactive element; verb-first labels ("Requ
 <Button variant="ghost" size="sm">Skip for now</Button>
 ```
 
-Variants: `primary` (violet, everyday default), `butter` (lime — the ONE hero CTA on a view), `secondary` (outlined), `ghost` (text). Sizes `sm|md|lg`. `fullWidth` for forms. Hand-sketched corner shape (`--radius-btn`), Bricolage labels; only secondary carries a soft gray outline. Hover lifts with a marker shadow + ~1° tilt; press squishes to 97%.
+Variants: `primary` (violet, everyday default), `yellow` (the ONE hero CTA on a view), `secondary` (outlined), `ghost` (text). Sizes `sm|md|lg`. `fullWidth` for forms. Pill corners (`--radius-btn`), Bricolage labels; only secondary carries a soft gray outline. Hover deepens the fill and grows the flat shadow — nothing moves; press squishes to 97%.
