@@ -352,14 +352,15 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const css = `
 .ax-card{position:relative;font-family:var(--font-body);border-radius:var(--radius-hand);transition:transform var(--dur-med) var(--ease-launch),box-shadow var(--dur-med) var(--ease-launch)}
-.ax-card--sheet{background:var(--surface-card);box-shadow:var(--shadow-paper-lg)}
-.ax-card--quiet{background:var(--surface-quiet);box-shadow:var(--shadow-paper-lg)}
-.ax-card--tint{background:var(--cd-tint);color:var(--cd-fg);box-shadow:var(--shadow-paper-lg)}
-.ax-card--ink{background:var(--surface-inverse);color:var(--text-inverse);box-shadow:var(--shadow-paper-lg)}
+.ax-card--sheet{background:var(--surface-card);box-shadow:var(--shadow-paper)}
+.ax-card--quiet{background:var(--surface-quiet);box-shadow:var(--shadow-paper)}
+.ax-card--tint{background:var(--cd-tint);color:var(--cd-fg);box-shadow:var(--shadow-paper)}
+.ax-card--ink{background:var(--surface-inverse);color:var(--text-inverse);box-shadow:var(--shadow-paper)}
 .ax-card--sketch{background:transparent;border:2px dashed var(--pencil-line);box-shadow:none}
 .ax-card--tall{box-shadow:var(--shadow-paper-lg)}
 .ax-card--interactive{cursor:pointer}
-.ax-card--interactive:hover{box-shadow:var(--shadow-paper-lg)}
+.ax-card--interactive:hover{background-image:linear-gradient(color-mix(in srgb,var(--ink-900) 5%,transparent),color-mix(in srgb,var(--ink-900) 5%,transparent));box-shadow:var(--shadow-paper-lg)}
+.ax-card--ink.ax-card--interactive:hover{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08))}
 .ax-card--pad-none{padding:0}.ax-card--pad-sm{padding:16px}.ax-card--pad-md{padding:24px}.ax-card--pad-lg{padding:32px}
 .ax-card__punch{position:absolute;top:11px;left:18px;display:flex;gap:14px}
 .ax-card__punch span{width:13px;height:13px;border-radius:50%;background:var(--surface-quiet);box-shadow:inset 0 0 0 1.5px rgba(23,16,41,.22),inset 2px 2px 0 rgba(23,16,41,.10)}
