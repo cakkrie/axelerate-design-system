@@ -32,7 +32,7 @@ breaks the specimens and `SKILL.md` at once.** Everything added here is additive
 ## Use it
 
 ```bash
-npm install github:<owner>/axelerate-design-system
+npm install github:cakkrie/axelerate-design-system
 ```
 
 ```jsx
