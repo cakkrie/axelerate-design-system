@@ -10,7 +10,7 @@ const css=`
 .ax-iconbtn--secondary{background:var(--surface-card);box-shadow:var(--sticker-cut),0 0 0 4px var(--gray-300),var(--shadow-paper)}
 .ax-iconbtn--secondary:hover:not(:disabled){color:var(--text-brand);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}
 .ax-iconbtn--primary{background:var(--brand-primary);color:var(--text-on-brand);box-shadow:var(--sticker-cut),var(--shadow-paper)}
-.ax-iconbtn--primary:hover:not(:disabled){background:var(--brand-primary-strong);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}`;
+.ax-iconbtn--primary:hover:not(:disabled){background:var(--brand-primary-strong);color:var(--text-on-brand);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-iconbutton')){const s=document.createElement('style');s.id='ax-css-iconbutton';s.textContent=css;document.head.appendChild(s);}
 export function IconButton({label,variant='ghost',size='md',disabled=false,className='',children,...rest}){
   const cls=['ax-iconbtn','ax-iconbtn--'+variant,'ax-iconbtn--'+size,className].filter(Boolean).join(' ');
