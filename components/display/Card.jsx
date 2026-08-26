@@ -8,7 +8,7 @@ const css=`
 .ax-card--sketch{background:transparent;border:2px dashed var(--pencil-line);box-shadow:none}
 .ax-card--tall{box-shadow:var(--shadow-paper-lg)}
 .ax-card--interactive{cursor:pointer}
-.ax-card--interactive:hover{transform:translate(-2px,-3px) rotate(var(--cd-hover-tilt,-1deg));box-shadow:var(--shadow-paper-lg)}
+.ax-card--interactive:hover{box-shadow:var(--shadow-paper-lg)}
 .ax-card--pad-none{padding:0}.ax-card--pad-sm{padding:16px}.ax-card--pad-md{padding:24px}.ax-card--pad-lg{padding:32px}
 .ax-card__punch{position:absolute;top:11px;left:18px;display:flex;gap:14px}
 .ax-card__punch span{width:13px;height:13px;border-radius:50%;background:var(--surface-quiet);box-shadow:inset 0 0 0 1.5px rgba(23,16,41,.22),inset 2px 2px 0 rgba(23,16,41,.10)}

@@ -10,12 +10,12 @@ body{padding:20px 22px;box-sizing:border-box;display:flex;gap:26px;align-items:c
 .demos{display:flex;gap:12px;margin-left:auto}
 .btn{height:44px;padding:0 20px;border:none;border-radius:var(--radius-btn);display:inline-flex;align-items:center;font:700 14.5px var(--font-display);letter-spacing:-.01em;cursor:pointer;transition:transform var(--dur-fast) var(--ease-launch),box-shadow var(--dur-med) var(--ease-launch),background var(--dur-fast) var(--ease-launch),color var(--dur-fast)}
 .p1{background:var(--brand-primary);color:#fff;box-shadow:var(--sticker-cut),var(--shadow-paper)}
-.p1:hover{background:var(--brand-primary-strong);transform:translate(-1px,-2px) rotate(-1deg);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}
+.p1:hover{background:var(--brand-primary-strong);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}
 .p1:active{transform:scale(.97)}
 .p2{background:var(--surface-card);color:var(--ink-900);box-shadow:var(--sticker-cut),0 0 0 4px var(--gray-300),var(--shadow-paper)}
-.p2:hover{color:var(--text-brand);transform:translate(-1px,-2px) rotate(-.8deg);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}
+.p2:hover{color:var(--text-brand);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}
 .p2:active{transform:scale(.97)}
 </style></head><body>
-<div class="spec"><span class="n">launch — cubic-bezier(.2, 0, 0, 1)</span><i>Everything accelerates out of the gate and glides in.<br>Hover lifts the sticker up-left and deepens its flat shadow · scale(.97) squish on press.<br>No bounces, no springs, no blurred glows, nothing over 320ms.</i><div class="d"><span>fast 120ms</span><span>med 200ms</span><span>slow 320ms</span></div></div>
+<div class="spec"><span class="n">launch — cubic-bezier(.2, 0, 0, 1)</span><i>Everything accelerates out of the gate and glides in.<br>Hover deepens the sticker and grows its flat shadow · scale(.97) squish on press.<br>No bounces, no springs, no blurred glows, nothing over 320ms.</i><div class="d"><span>fast 120ms</span><span>med 200ms</span><span>slow 320ms</span></div></div>
 <div class="demos"><button class="btn p1">Hover me</button><button class="btn p2">Press me</button></div>
 </body></html>

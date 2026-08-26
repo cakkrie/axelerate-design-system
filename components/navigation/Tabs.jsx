@@ -3,7 +3,7 @@ const css=`
 .ax-tabs{display:flex;align-items:flex-end;font-family:var(--font-body)}
 .ax-tabs--folder{gap:4px;position:relative;border-bottom:3px solid var(--brand-primary)}
 .ax-tabs--folder .ax-tab{border:none;background:var(--surface-card);color:var(--gray-600);padding:9px 18px 8px;border-radius:10px 13px 0 0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:14px;letter-spacing:-.01em;cursor:pointer;position:relative;top:2px;transition:background var(--dur-fast),color var(--dur-fast),top var(--dur-fast) var(--ease-launch)}
-.ax-tabs--folder .ax-tab:hover{top:0;color:var(--text-primary)}
+.ax-tabs--folder .ax-tab:hover{color:var(--text-primary)}
 .ax-tabs--folder .ax-tab--active{background:var(--brand-primary);color:#fff;top:0;padding-bottom:11px}
 .ax-tabs--underline{gap:22px;border-bottom:1px solid var(--border-subtle)}
 .ax-tabs--underline .ax-tab{border:none;background:none;padding:10px 2px;margin-bottom:-1px;font:inherit;font-size:14px;font-weight:var(--weight-medium);color:var(--text-secondary);cursor:pointer;border-bottom:2px solid transparent;transition:color var(--dur-fast),border-color var(--dur-fast)}

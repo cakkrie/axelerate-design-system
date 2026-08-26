@@ -19,11 +19,11 @@ const css = `
 .ax-btn--md{height:40px;padding:0 18px;font-size:14.5px}
 .ax-btn--lg{height:48px;padding:0 24px;font-size:16.5px}
 .ax-btn--primary{background:var(--brand-primary);color:var(--text-on-brand);box-shadow:var(--sticker-cut),var(--shadow-paper)}
-.ax-btn--primary:hover:not(:disabled){background:var(--brand-primary-strong);transform:translate(-1px,-2px) rotate(-1deg);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}
+.ax-btn--primary:hover:not(:disabled){background:var(--brand-primary-strong);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}
 .ax-btn--yellow{background:var(--brand-accent);color:var(--text-on-accent);box-shadow:var(--sticker-cut),var(--shadow-paper)}
-.ax-btn--yellow:hover:not(:disabled){background:var(--brand-accent-strong);transform:translate(-1px,-2px) rotate(-1.5deg);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}
+.ax-btn--yellow:hover:not(:disabled){background:var(--brand-accent-strong);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}
 .ax-btn--secondary{background:var(--surface-card);color:var(--text-primary);box-shadow:var(--sticker-cut),0 0 0 4px var(--gray-300),var(--shadow-paper)}
-.ax-btn--secondary:hover:not(:disabled){color:var(--text-brand);transform:translate(-1px,-2px) rotate(-.8deg);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}
+.ax-btn--secondary:hover:not(:disabled){color:var(--text-brand);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}
 .ax-btn--ghost{background:transparent;color:var(--text-brand);padding-bottom:2px}
 .ax-btn--ghost:hover:not(:disabled){background:var(--scribble-butter) no-repeat left 92%/100% 7px}
 .ax-btn--full{width:100%}
@@ -64,9 +64,9 @@ const css = `
 .ax-iconbtn--lg{width:44px;height:44px}.ax-iconbtn--lg svg,.ax-iconbtn--lg .ax-icon{width:22px;height:22px}
 .ax-iconbtn--ghost:hover:not(:disabled){background:var(--surface-quiet);color:var(--text-primary)}
 .ax-iconbtn--secondary{background:var(--surface-card);box-shadow:var(--sticker-cut),0 0 0 4px var(--gray-300),var(--shadow-paper)}
-.ax-iconbtn--secondary:hover:not(:disabled){color:var(--text-brand);transform:translate(-1px,-2px) rotate(-3deg);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}
+.ax-iconbtn--secondary:hover:not(:disabled){color:var(--text-brand);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}
 .ax-iconbtn--primary{background:var(--brand-primary);color:var(--text-on-brand);box-shadow:var(--sticker-cut),var(--shadow-paper)}
-.ax-iconbtn--primary:hover:not(:disabled){background:var(--brand-primary-strong);transform:translate(-1px,-2px) rotate(-4deg);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}`;
+.ax-iconbtn--primary:hover:not(:disabled){background:var(--brand-primary-strong);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}`;
 if (typeof document !== 'undefined' && !document.getElementById('ax-css-iconbutton')) {
   const s = document.createElement('style');
   s.id = 'ax-css-iconbutton';
@@ -359,7 +359,7 @@ const css = `
 .ax-card--sketch{background:transparent;border:2px dashed var(--pencil-line);box-shadow:none}
 .ax-card--tall{box-shadow:var(--shadow-paper-lg)}
 .ax-card--interactive{cursor:pointer}
-.ax-card--interactive:hover{transform:translate(-2px,-3px) rotate(var(--cd-hover-tilt,-1deg));box-shadow:var(--shadow-paper-lg)}
+.ax-card--interactive:hover{box-shadow:var(--shadow-paper-lg)}
 .ax-card--pad-none{padding:0}.ax-card--pad-sm{padding:16px}.ax-card--pad-md{padding:24px}.ax-card--pad-lg{padding:32px}
 .ax-card__punch{position:absolute;top:11px;left:18px;display:flex;gap:14px}
 .ax-card__punch span{width:13px;height:13px;border-radius:50%;background:var(--surface-quiet);box-shadow:inset 0 0 0 1.5px rgba(23,16,41,.22),inset 2px 2px 0 rgba(23,16,41,.10)}
@@ -935,10 +935,8 @@ const css = `
 .ax-switch__track{width:46px;height:25px;border-radius:15px 17px 14px 18px/17px 14px 18px 15px;background:var(--surface-card);box-shadow:inset 0 0 0 2px var(--pencil-line);position:relative;flex:none;transition:background var(--dur-med) var(--ease-launch),box-shadow var(--dur-med)}
 .ax-switch__thumb{position:absolute;top:-4px;left:-3px;width:29px;height:29px;border-radius:54% 46% 50% 50%/50% 52% 48% 50%;background:var(--ink-900);box-shadow:0 0 0 2.5px var(--gray-0),2px 3px 0 rgba(23,16,41,.2);transition:transform var(--dur-med) var(--ease-launch),background var(--dur-fast)}
 .ax-switch:hover:not(.ax-switch--disabled) .ax-switch__track{box-shadow:inset 0 0 0 2px var(--ink-900)}
-.ax-switch:hover:not(.ax-switch--disabled) .ax-switch__thumb{transform:rotate(-8deg)}
 .ax-switch__input:checked~.ax-switch__track{background:var(--brand-primary-soft);box-shadow:inset 0 0 0 2px var(--brand-primary)}
 .ax-switch__input:checked~.ax-switch__track .ax-switch__thumb{transform:translateX(23px) rotate(14deg);background:var(--brand-primary)}
-.ax-switch:hover:not(.ax-switch--disabled) .ax-switch__input:checked~.ax-switch__track .ax-switch__thumb{transform:translateX(23px) rotate(22deg)}
 .ax-switch__input:focus-visible~.ax-switch__track{outline:2px solid var(--violet-500);outline-offset:3px}`;
 if (typeof document !== 'undefined' && !document.getElementById('ax-css-switch')) {
   const s = document.createElement('style');
@@ -978,7 +976,7 @@ const css = `
 .ax-tabs{display:flex;align-items:flex-end;font-family:var(--font-body)}
 .ax-tabs--folder{gap:4px;position:relative;border-bottom:3px solid var(--brand-primary)}
 .ax-tabs--folder .ax-tab{border:none;background:var(--surface-card);color:var(--gray-600);padding:9px 18px 8px;border-radius:10px 13px 0 0;font-family:var(--font-display);font-weight:var(--weight-bold);font-size:14px;letter-spacing:-.01em;cursor:pointer;position:relative;top:2px;transition:background var(--dur-fast),color var(--dur-fast),top var(--dur-fast) var(--ease-launch)}
-.ax-tabs--folder .ax-tab:hover{top:0;color:var(--text-primary)}
+.ax-tabs--folder .ax-tab:hover{color:var(--text-primary)}
 .ax-tabs--folder .ax-tab--active{background:var(--brand-primary);color:#fff;top:0;padding-bottom:11px}
 .ax-tabs--underline{gap:22px;border-bottom:1px solid var(--border-subtle)}
 .ax-tabs--underline .ax-tab{border:none;background:none;padding:10px 2px;margin-bottom:-1px;font:inherit;font-size:14px;font-weight:var(--weight-medium);color:var(--text-secondary);cursor:pointer;border-bottom:2px solid transparent;transition:color var(--dur-fast),border-color var(--dur-fast)}
