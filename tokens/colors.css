@@ -23,7 +23,7 @@
 /* surfaces */
 --surface-page:#FFFFFF;--surface-card:#FFFFFF;--surface-sunken:var(--gray-50);--surface-inverse:var(--ink-900);--surface-brand:var(--violet-600);--surface-brand-soft:var(--violet-50);--surface-quiet:var(--gray-50);--surface-paper:var(--gray-50);
 /* text */
---text-primary:var(--ink-900);--text-secondary:var(--gray-600);--text-muted:var(--gray-400);--text-brand:var(--violet-700);--text-on-brand:#FFFFFF;--text-on-accent:var(--ink-900);--text-inverse:#FFFFFF;--text-inverse-secondary:#CFC8BC;--text-on-tint:#FFFFFF;--text-on-tint-light:var(--ink-900);
+--text-primary:var(--ink-900);--text-secondary:var(--gray-600);--text-muted:#767166;--text-brand:var(--violet-700);--text-on-brand:#FFFFFF;--text-on-accent:var(--ink-900);--text-inverse:#FFFFFF;--text-inverse-secondary:#CFC8BC;--text-on-tint:#FFFFFF;--text-on-tint-light:var(--ink-900);
 /* borders + focus */
 --border-subtle:var(--gray-100);--border-default:var(--gray-200);--border-strong:var(--gray-300);--border-brand:var(--violet-300);
 --link:var(--violet-700);--link-hover:var(--violet-500);
