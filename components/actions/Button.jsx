@@ -4,7 +4,7 @@ const css=`
 .ax-btn:active:not(:disabled){transform:scale(.97)}
 .ax-btn:disabled{opacity:.45;cursor:not-allowed}
 .ax-btn--sm{height:32px;padding:0 14px;font-size:13.5px}
-.ax-btn--md{height:40px;padding:0 18px;font-size:14.5px}
+.ax-btn--md{height:44px;padding:0 18px;font-size:14.5px}
 .ax-btn--lg{height:48px;padding:0 24px;font-size:16.5px}
 .ax-btn--primary{background:var(--brand-primary);color:var(--text-on-brand);box-shadow:var(--sticker-cut),var(--shadow-paper)}
 .ax-btn--primary:hover:not(:disabled){background:var(--brand-primary-strong);color:var(--text-on-brand);box-shadow:var(--sticker-cut),var(--shadow-paper-lg)}

@@ -4,8 +4,8 @@ const css=`
 .ax-iconbtn:active:not(:disabled){transform:scale(.94)}
 .ax-iconbtn:disabled{opacity:.45;cursor:not-allowed}
 .ax-iconbtn--sm{width:28px;height:28px}.ax-iconbtn--sm svg,.ax-iconbtn--sm .ax-icon{width:15px;height:15px}
-.ax-iconbtn--md{width:36px;height:36px}.ax-iconbtn--md svg,.ax-iconbtn--md .ax-icon{width:18px;height:18px}
-.ax-iconbtn--lg{width:44px;height:44px}.ax-iconbtn--lg svg,.ax-iconbtn--lg .ax-icon{width:22px;height:22px}
+.ax-iconbtn--md{width:44px;height:44px}.ax-iconbtn--md svg,.ax-iconbtn--md .ax-icon{width:18px;height:18px}
+.ax-iconbtn--lg{width:48px;height:48px}.ax-iconbtn--lg svg,.ax-iconbtn--lg .ax-icon{width:22px;height:22px}
 .ax-iconbtn--ghost:hover:not(:disabled){background:var(--surface-quiet);color:var(--text-primary)}
 .ax-iconbtn--secondary{background:var(--surface-card);box-shadow:var(--sticker-cut),0 0 0 4px var(--gray-300),var(--shadow-paper)}
 .ax-iconbtn--secondary:hover:not(:disabled){color:var(--text-brand);box-shadow:var(--sticker-cut),0 0 0 4px var(--violet-400),var(--shadow-paper-lg)}

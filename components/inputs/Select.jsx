@@ -1,7 +1,7 @@
 import React from 'react';
 const css=`
 .ax-selectwrap{position:relative;display:flex}
-.ax-select{appearance:none;-webkit-appearance:none;width:100%;height:42px;padding:0 36px 0 12px;border:none;border-bottom:2px solid var(--pencil-line);border-radius:var(--radius-hand-sm) var(--radius-hand-sm) 3px 3px;background:var(--surface-sunken);font-family:var(--font-body);font-size:14.5px;color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast),box-shadow var(--dur-fast),background var(--dur-fast)}
+.ax-select{appearance:none;-webkit-appearance:none;width:100%;height:44px;padding:0 36px 0 12px;border:none;border-bottom:2px solid var(--pencil-line);border-radius:var(--radius-hand-sm) var(--radius-hand-sm) 3px 3px;background:var(--surface-quiet);font-family:var(--font-body);font-size:14.5px;color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast),box-shadow var(--dur-fast),background var(--dur-fast)}
 .ax-select:hover:not(:disabled):not(:focus){border-bottom-color:var(--pencil-line-strong)}
 .ax-select:focus{outline:none;background:var(--gray-0);border-bottom-color:var(--brand-primary);box-shadow:inset 0 -9px 0 var(--butter-200)}
 .ax-select:disabled{color:var(--gray-400);border-bottom-style:dashed;cursor:not-allowed}
