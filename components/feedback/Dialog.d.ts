@@ -13,5 +13,9 @@ export interface DialogProps {
   /** Butter tape strip across the top edge (default true). */
   tape?: boolean;
   children?: React.ReactNode;
+  /** Where focus lands on open. Defaults to the dialog itself. */
+  initialFocus?: React.RefObject<HTMLElement>;
 }
-export declare function Dialog(props: DialogProps): JSX.Element | null;
+export declare const Dialog: React.ForwardRefExoticComponent<
+  DialogProps & React.RefAttributes<HTMLDivElement>
+>;

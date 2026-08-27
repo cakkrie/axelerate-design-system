@@ -12,10 +12,46 @@ const css=`
 @keyframes axPop{from{transform:scale(.95) translateY(8px);opacity:0}}
 @keyframes axFade{from{opacity:0}}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-dialog')){const s=document.createElement('style');s.id='ax-css-dialog';s.textContent=css;document.head.appendChild(s);}
-export function Dialog({open=false,onClose,title,footer,width=440,tape=true,children,...rest}){
+export const Dialog=React.forwardRef(function Dialog({open=false,onClose,title,footer,width=440,tape=true,initialFocus,children,...rest},ref){
+  const inner=React.useRef(null);
+  const returnTo=React.useRef(null);
+  React.useImperativeHandle(ref,()=>inner.current,[]);
+
+  React.useEffect(()=>{
+    if(!open)return undefined;
+    // Remember what had focus so it can be handed back, and move focus in.
+    // A modal nobody's focus ever enters is a modal a keyboard user is still
+    // outside of, tabbing through the page it is covering.
+    returnTo.current=document.activeElement;
+    const node=inner.current;
+    const target=(initialFocus&&initialFocus.current)||node;
+    target&&target.focus();
+
+    const onKey=(e)=>{
+      if(e.key==='Escape'){onClose&&onClose();return;}
+      if(e.key!=='Tab'||!node)return;
+      // Tab cycles inside the dialog. Without this it walks straight out into
+      // the content behind the overlay, which is not reachable by mouse.
+      const items=[...node.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+        .filter((n)=>n.offsetWidth||n.offsetHeight||n.getClientRects().length);
+      if(!items.length){e.preventDefault();node.focus();return;}
+      const first=items[0],last=items[items.length-1];
+      if(!e.shiftKey&&(document.activeElement===last||document.activeElement===node)){e.preventDefault();first.focus();}
+      else if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    };
+    document.addEventListener('keydown',onKey);
+    return ()=>{
+      document.removeEventListener('keydown',onKey);
+      // Focus goes back where it came from, synchronously: a rAF here makes
+      // the assertion flaky under jsdom and the frame buys nothing.
+      const back=returnTo.current;
+      back&&back.isConnected&&back.focus();
+    };
+  },[open,onClose,initialFocus]);
+
   if(!open)return null;
   return <div className="ax-dialog-overlay" onMouseDown={e=>{if(e.target===e.currentTarget&&onClose)onClose();}}>
-    <div className="ax-dialog" role="dialog" aria-modal="true" style={{width,maxWidth:'calc(100% - 32px)'}} {...rest}>
+    <div className="ax-dialog" role="dialog" aria-modal="true" tabIndex={-1} ref={inner} style={{width,maxWidth:'calc(100% - 32px)'}} {...rest}>
       {tape&&<span className="ax-dialog__tape" aria-hidden="true"></span>}
       <div className="ax-dialog__head">
         <h2 className="ax-dialog__title">{title}</h2>
@@ -27,4 +63,4 @@ export function Dialog({open=false,onClose,title,footer,width=440,tape=true,chil
       {footer&&<div className="ax-dialog__foot">{footer}</div>}
     </div>
   </div>;
-}
+});

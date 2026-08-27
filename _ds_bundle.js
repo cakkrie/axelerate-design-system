@@ -526,58 +526,48 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-dialog')
   s.textContent = css;
   document.head.appendChild(s);
 }
-function Dialog({
-  open = false,
-  onClose,
-  title,
-  footer,
-  width = 440,
-  tape = true,
-  children,
-  ...rest
-}) {
+const Dialog = React.forwardRef(function Dialog({ open = false, onClose, title, footer, width = 440, tape = true, initialFocus, children, ...rest }, ref) {
+  const inner = React.useRef(null);
+  const returnTo = React.useRef(null);
+  React.useImperativeHandle(ref, () => inner.current, []);
+
+  React.useEffect(() => {
+    if (!open) return undefined;
+    returnTo.current = document.activeElement;
+    const node = inner.current;
+    const target = (initialFocus && initialFocus.current) || node;
+    target && target.focus();
+
+    const onKey = (e) => {
+      if (e.key === 'Escape') { onClose && onClose(); return; }
+      if (e.key !== 'Tab' || !node) return;
+      const items = [...node.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+        .filter((n) => n.offsetWidth || n.offsetHeight || n.getClientRects().length);
+      if (!items.length) { e.preventDefault(); node.focus(); return; }
+      const first = items[0], last = items[items.length - 1];
+      if (!e.shiftKey && (document.activeElement === last || document.activeElement === node)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      const back = returnTo.current;
+      back && back.isConnected && back.focus();
+    };
+  }, [open, onClose, initialFocus]);
+
   if (!open) return null;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "ax-dialog-overlay",
-    onMouseDown: e => {
-      if (e.target === e.currentTarget && onClose) onClose();
-    }
-  }, /*#__PURE__*/React.createElement("div", _extends({
-    className: "ax-dialog",
-    role: "dialog",
-    "aria-modal": "true",
-    style: {
-      width,
-      maxWidth: 'calc(100% - 32px)'
-    }
-  }, rest), tape && /*#__PURE__*/React.createElement("span", {
-    className: "ax-dialog__tape",
-    "aria-hidden": "true"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "ax-dialog__head"
-  }, /*#__PURE__*/React.createElement("h2", {
-    className: "ax-dialog__title"
-  }, title), /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "ax-dialog__x",
-    "aria-label": "Close",
-    onClick: onClose
-  }, /*#__PURE__*/React.createElement("svg", {
-    viewBox: "0 0 24 24",
-    width: "16",
-    height: "16",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2",
-    strokeLinecap: "round"
-  }, /*#__PURE__*/React.createElement("path", {
-    d: "M18 6 6 18M6 6l12 12"
-  })))), /*#__PURE__*/React.createElement("div", {
-    className: "ax-dialog__body"
-  }, children), footer && /*#__PURE__*/React.createElement("div", {
-    className: "ax-dialog__foot"
-  }, footer)));
-}
+  return React.createElement("div", { className: "ax-dialog-overlay", onMouseDown: e => { if (e.target === e.currentTarget && onClose) onClose(); } },
+    React.createElement("div", _extends({ className: "ax-dialog", role: "dialog", "aria-modal": "true", tabIndex: -1, ref: inner, style: { width, maxWidth: 'calc(100% - 32px)' } }, rest),
+      tape && React.createElement("span", { className: "ax-dialog__tape", "aria-hidden": "true" }),
+      React.createElement("div", { className: "ax-dialog__head" },
+        React.createElement("h2", { className: "ax-dialog__title" }, title),
+        React.createElement("button", { type: "button", className: "ax-dialog__x", "aria-label": "Close", onClick: onClose },
+          React.createElement("svg", { viewBox: "0 0 24 24", width: "16", height: "16", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" },
+            React.createElement("path", { d: "M18 6 6 18M6 6l12 12" })))),
+      React.createElement("div", { className: "ax-dialog__body" }, children),
+      footer && React.createElement("div", { className: "ax-dialog__foot" }, footer)));
+});
 Object.assign(__ds_scope, { Dialog });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Dialog.jsx", error: String((e && e.message) || e) }); }
 
