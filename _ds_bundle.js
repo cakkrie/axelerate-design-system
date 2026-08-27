@@ -790,7 +790,7 @@ Object.assign(__ds_scope, { Checkbox });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const css = `
-.ax-field{display:flex;flex-direction:column;gap:5px;font-family:var(--font-body);min-width:0}
+.ax-field{display:flex;flex-direction:column;gap:5px;font-family:var(--font-body);min-width:0}\n.ax-field__lab{display:flex;flex-direction:column;gap:5px;min-width:0}
 .ax-field__label{font-family:var(--font-label);font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gray-600)}
 .ax-field__msg{font-family:var(--font-hand);font-size:16px;color:var(--gray-600);line-height:1.15}
 .ax-field__msg--error{color:var(--danger-fg)}
@@ -817,9 +817,11 @@ function Input({
   ...rest
 }) {
   const __msgId = React.useId();
-  return /*#__PURE__*/React.createElement("label", {
+  return /*#__PURE__*/React.createElement("div", {
     className: ('ax-field ' + className).trim(),
     style: style
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "ax-field__lab"
   }, label && /*#__PURE__*/React.createElement("span", {
     className: "ax-field__label"
   }, label), /*#__PURE__*/React.createElement("input", _extends({
@@ -827,7 +829,7 @@ function Input({
     disabled: disabled,
     "aria-invalid": error ? true : undefined,
     "aria-describedby": (error || hint) ? __msgId : undefined
-  }, rest)), (error || hint) && /*#__PURE__*/React.createElement("span", {
+  }, rest))), (error || hint) && /*#__PURE__*/React.createElement("span", {
     id: __msgId,
     className: 'ax-field__msg' + (error ? ' ax-field__msg--error' : '')
   }, error || hint));
@@ -903,9 +905,11 @@ function Select({
   ...rest
 }) {
   const __msgId = React.useId();
-  return /*#__PURE__*/React.createElement("label", {
+  return /*#__PURE__*/React.createElement("div", {
     className: ('ax-field ' + className).trim(),
     style: style
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "ax-field__lab"
   }, label && /*#__PURE__*/React.createElement("span", {
     className: "ax-field__label"
   }, label), /*#__PURE__*/React.createElement("span", {
@@ -925,7 +929,7 @@ function Select({
     style: {
       '--chevron': CHEV
     }
-  })), hint && /*#__PURE__*/React.createElement("span", {
+  }))), hint && /*#__PURE__*/React.createElement("span", {
     id: __msgId,
     className: "ax-field__msg"
   }, hint));

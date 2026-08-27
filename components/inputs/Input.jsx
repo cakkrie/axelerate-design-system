@@ -1,6 +1,7 @@
 import React from 'react';
 const css=`
 .ax-field{display:flex;flex-direction:column;gap:5px;font-family:var(--font-body);min-width:0}
+.ax-field__lab{display:flex;flex-direction:column;gap:5px;min-width:0}
 .ax-field__label{font-family:var(--font-label);font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gray-600)}
 .ax-field__msg{font-family:var(--font-hand);font-size:16px;color:var(--gray-600);line-height:1.15}
 .ax-field__msg--error{color:var(--danger-fg)}
@@ -19,10 +20,16 @@ export function Input({label,hint,error,disabled=false,className='',style,...res
   // the name clean and still reads the message after it.
   const msgId=React.useId();
   const msg=error||hint;
-  return <label className={('ax-field '+className).trim()} style={style}>
-    {label&&<span className="ax-field__label">{label}</span>}
-    <input className={'ax-input'+(error?' ax-input--error':'')} disabled={disabled}
-      aria-invalid={error?true:undefined} aria-describedby={msg?msgId:undefined} {...rest}/>
+  // The message is a sibling of the <label>, not a child of it. Nested, its
+  // text became part of the field's accessible name — "School email any .edu
+  // address works" — and aria-describedby alone does not undo that, because
+  // the name is still built from the label's contents.
+  return <div className={('ax-field '+className).trim()} style={style}>
+    <label className="ax-field__lab">
+      {label&&<span className="ax-field__label">{label}</span>}
+      <input className={'ax-input'+(error?' ax-input--error':'')} disabled={disabled}
+        aria-invalid={error?true:undefined} aria-describedby={msg?msgId:undefined} {...rest}/>
+    </label>
     {msg&&<span id={msgId} className={'ax-field__msg'+(error?' ax-field__msg--error':'')}>{msg}</span>}
-  </label>;
+  </div>;
 }
