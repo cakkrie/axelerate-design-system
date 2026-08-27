@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AxelerateDesignSystem_edbc1f","components":[{"name":"Button","sourcePath":"components/actions/Button.jsx"},{"name":"IconButton","sourcePath":"components/actions/IconButton.jsx"},{"name":"MarkerBar","sourcePath":"components/data/MarkerBar.jsx"},{"name":"StatBlock","sourcePath":"components/data/StatBlock.jsx"},{"name":"TallyCount","sourcePath":"components/data/TallyCount.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Illustration","sourcePath":"components/illustration/Illustration.jsx"},{"name":"Checkbox","sourcePath":"components/inputs/Checkbox.jsx"},{"name":"Input","sourcePath":"components/inputs/Input.jsx"},{"name":"Radio","sourcePath":"components/inputs/Radio.jsx"},{"name":"Select","sourcePath":"components/inputs/Select.jsx"},{"name":"Switch","sourcePath":"components/inputs/Switch.jsx"},{"name":"AppBar","sourcePath":"components/navigation/AppBar.jsx"},{"name":"ScreenHeader","sourcePath":"components/navigation/ScreenHeader.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"Bubble","sourcePath":"components/paper/Bubble.jsx"},{"name":"FileCard","sourcePath":"components/paper/FileCard.jsx"},{"name":"Sticker","sourcePath":"components/paper/Sticker.jsx"},{"name":"StickyNote","sourcePath":"components/paper/StickyNote.jsx"}],"sourceHashes":{"components/actions/Button.jsx":"b135d464f691","components/actions/IconButton.jsx":"d4ae3b90f2d9","components/data/MarkerBar.jsx":"14c2ce85aba2","components/data/StatBlock.jsx":"b99707712fa1","components/data/TallyCount.jsx":"55b4e5933abb","components/display/Badge.jsx":"7ec264b3221b","components/display/Card.jsx":"4b9f1ae0015f","components/display/Tag.jsx":"1a3043bd947c","components/feedback/Dialog.jsx":"d9bafef617e7","components/feedback/Toast.jsx":"884d75456818","components/feedback/Tooltip.jsx":"069949548838","components/illustration/Illustration.jsx":"061779e30331","components/inputs/Checkbox.jsx":"a90df4f83829","components/inputs/Input.jsx":"89596625da39","components/inputs/Radio.jsx":"20d75c2db055","components/inputs/Select.jsx":"03afb8d8b115","components/inputs/Switch.jsx":"4a1146c43d65","components/navigation/AppBar.jsx":"12a25a1f8776","components/navigation/ScreenHeader.jsx":"aa9f357ee71f","components/navigation/Tabs.jsx":"043f34a9ac44","components/paper/Bubble.jsx":"0bfb1225baf7","components/paper/FileCard.jsx":"fbc0a933d930","components/paper/Sticker.jsx":"dc530d5eef0b","components/paper/StickyNote.jsx":"1c58160d4f4a"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"AxelerateDesignSystem_edbc1f","components":[{"name":"Button","sourcePath":"components/actions/Button.jsx"},{"name":"IconButton","sourcePath":"components/actions/IconButton.jsx"},{"name":"MarkerBar","sourcePath":"components/data/MarkerBar.jsx"},{"name":"StatBlock","sourcePath":"components/data/StatBlock.jsx"},{"name":"TallyCount","sourcePath":"components/data/TallyCount.jsx"},{"name":"Badge","sourcePath":"components/display/Badge.jsx"},{"name":"Card","sourcePath":"components/display/Card.jsx"},{"name":"Tag","sourcePath":"components/display/Tag.jsx"},{"name":"Dialog","sourcePath":"components/feedback/Dialog.jsx"},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx"},{"name":"Tooltip","sourcePath":"components/feedback/Tooltip.jsx"},{"name":"Illustration","sourcePath":"components/illustration/Illustration.jsx"},{"name":"Checkbox","sourcePath":"components/inputs/Checkbox.jsx"},{"name":"Input","sourcePath":"components/inputs/Input.jsx"},{"name":"Radio","sourcePath":"components/inputs/Radio.jsx"},{"name":"Select","sourcePath":"components/inputs/Select.jsx"},{"name":"Switch","sourcePath":"components/inputs/Switch.jsx"},{"name":"AppBar","sourcePath":"components/navigation/AppBar.jsx"},{"name":"ScreenHeader","sourcePath":"components/navigation/ScreenHeader.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"Bubble","sourcePath":"components/paper/Bubble.jsx"},{"name":"FileCard","sourcePath":"components/paper/FileCard.jsx"},{"name":"Sticker","sourcePath":"components/paper/Sticker.jsx"},{"name":"StickyNote","sourcePath":"components/paper/StickyNote.jsx"}],"sourceHashes":{"components/actions/Button.jsx":"b135d464f691","components/actions/IconButton.jsx":"d4ae3b90f2d9","components/data/MarkerBar.jsx":"14c2ce85aba2","components/data/StatBlock.jsx":"b99707712fa1","components/data/TallyCount.jsx":"55b4e5933abb","components/display/Badge.jsx":"7ec264b3221b","components/display/Card.jsx":"4b9f1ae0015f","components/display/Tag.jsx":"1a3043bd947c","components/feedback/Dialog.jsx":"10a9ad643956","components/feedback/Toast.jsx":"884d75456818","components/feedback/Tooltip.jsx":"069949548838","components/illustration/Illustration.jsx":"061779e30331","components/inputs/Checkbox.jsx":"a90df4f83829","components/inputs/Input.jsx":"89596625da39","components/inputs/Radio.jsx":"20d75c2db055","components/inputs/Select.jsx":"03afb8d8b115","components/inputs/Switch.jsx":"62f295025acc","components/navigation/AppBar.jsx":"12a25a1f8776","components/navigation/ScreenHeader.jsx":"aa9f357ee71f","components/navigation/Tabs.jsx":"043f34a9ac44","components/paper/Bubble.jsx":"0bfb1225baf7","components/paper/FileCard.jsx":"fbc0a933d930","components/paper/Sticker.jsx":"dc530d5eef0b","components/paper/StickyNote.jsx":"1c58160d4f4a"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -934,14 +934,24 @@ Object.assign(__ds_scope, { Select });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const css = `
-.ax-switch{display:inline-flex;align-items:center;gap:11px;font-family:var(--font-body);font-size:14.5px;font-weight:var(--weight-medium);color:var(--text-primary);cursor:pointer;position:relative}
+/* The control's ink is 25px tall (20 at sm); the label carries the 44px
+   target around it, so the switch stays under the thumb of anyone who aims
+   near it without the drawn part growing to meet the rule. */
+.ax-switch{display:inline-flex;align-items:center;gap:11px;min-height:44px;font-family:var(--font-body);font-size:14.5px;font-weight:var(--weight-medium);color:var(--text-primary);cursor:pointer;position:relative}
 .ax-switch--disabled{opacity:.45;cursor:not-allowed}
 .ax-switch__input{position:absolute;opacity:0;width:0;height:0}
 .ax-switch__track{width:46px;height:25px;border-radius:15px 17px 14px 18px/17px 14px 18px 15px;background:var(--surface-card);box-shadow:inset 0 0 0 2px var(--pencil-line);position:relative;flex:none;transition:background var(--dur-med) var(--ease-launch),box-shadow var(--dur-med)}
 .ax-switch__thumb{position:absolute;top:-4px;left:-3px;width:29px;height:29px;border-radius:54% 46% 50% 50%/50% 52% 48% 50%;background:var(--ink-900);box-shadow:0 0 0 2.5px var(--gray-0),2px 3px 0 rgba(23,16,41,.2);transition:transform var(--dur-med) var(--ease-launch),background var(--dur-fast)}
+/* sm: for a settings list, where a row of full-size switches reads as a row
+   of buttons rather than a list of facts. The thumb keeps its overhang, so
+   the hand-drawn proportions survive the reduction. */
+.ax-switch--sm{gap:9px;font-size:13.5px}
+.ax-switch--sm .ax-switch__track{width:36px;height:20px;border-radius:12px 14px 11px 15px/14px 11px 15px 12px}
+.ax-switch--sm .ax-switch__thumb{top:-3px;left:-2px;width:23px;height:23px;box-shadow:0 0 0 2px var(--gray-0),2px 2px 0 rgba(23,16,41,.2)}
 .ax-switch:hover:not(.ax-switch--disabled) .ax-switch__track{box-shadow:inset 0 0 0 2px var(--ink-900)}
 .ax-switch__input:checked~.ax-switch__track{background:var(--brand-primary-soft);box-shadow:inset 0 0 0 2px var(--brand-primary)}
 .ax-switch__input:checked~.ax-switch__track .ax-switch__thumb{transform:translateX(23px) rotate(14deg);background:var(--brand-primary)}
+.ax-switch--sm .ax-switch__input:checked~.ax-switch__track .ax-switch__thumb{transform:translateX(17px) rotate(14deg)}
 .ax-switch__input:focus-visible~.ax-switch__track{outline:2px solid var(--violet-500);outline-offset:3px}`;
 if (typeof document !== 'undefined' && !document.getElementById('ax-css-switch')) {
   const s = document.createElement('style');
@@ -951,13 +961,14 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-switch')
 }
 function Switch({
   label,
+  size = 'md',
   disabled = false,
   className = '',
   style,
   ...rest
 }) {
   return /*#__PURE__*/React.createElement("label", {
-    className: ('ax-switch' + (disabled ? ' ax-switch--disabled' : '') + ' ' + className).trim(),
+    className: ('ax-switch' + (size === 'sm' ? ' ax-switch--sm' : '') + (disabled ? ' ax-switch--disabled' : '') + ' ' + className).trim(),
     style: style
   }, /*#__PURE__*/React.createElement("input", _extends({
     type: "checkbox",
