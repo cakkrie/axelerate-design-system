@@ -25,6 +25,10 @@ function Demo(){
       kicker="Me" title="My wallet" note="cash out any time"
       lede="Payouts land within two business days."
       action={<Button size="sm" variant="ghost">Withdraw</Button>}/>
+    <div style={{background:'var(--violet-600)',borderRadius:'var(--radius-hand)',padding:'14px 16px 18px',
+                 '--sh-ink':'var(--gray-0)','--sh-muted':'rgba(255,255,255,.72)','--sh-note':'var(--butter-300)'}}>
+      <ScreenHeader back={{href:'#',label:'Back to me'}} kicker="Me" title="My events" note="2 coming up"/>
+    </div>
     <div>
       <Tabs items={[{id:'all',label:'All'},{id:'digital',label:'Digital'},{id:'physical',label:'Physical'},{id:'kbeauty',label:'K-beauty'}]} value={a} onChange={setA}/>
       <Card padding="sm" style={{borderRadius:'var(--radius-hand)',borderTopLeftRadius:0,borderTopRightRadius:0,font:'400 13px var(--font-body)',color:'var(--gray-700)'}}>Navigation stays core — purple active, quiet grey resting. Accents belong to paper objects, never to nav chrome.</Card>
