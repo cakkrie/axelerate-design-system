@@ -2,9 +2,9 @@ Tab bar for switching views. The default `folder` variant draws literal folder t
 
 ```jsx
 <Tabs value={tab} onChange={setTab} items={[
-  {id:'founders',label:'For founders'},
-  {id:'operators',label:'For operators'},
-  {id:'backers',label:'For backers'}]}/>
+  {id:'all',label:'All'},
+  {id:'digital',label:'Digital'},
+  {id:'physical',label:'Physical'}]}/>
 ```
 
-**Navigation stays core** — purple, white, ink. The accent palette belongs to paper objects (cards, folders, bubbles, stickers), never to nav chrome. Use `variant="underline"` inside dense UI and `variant="pill"` for small segmented switches.
+**Navigation stays core** — purple, white, ink. The accent palette belongs to paper objects (cards, folders, bubbles, stickers), never to nav chrome. The one exception is a bottom tab bar with a small fixed set of destinations, where a per-destination tint is learnable; see the navigation rule in the readme. Use `variant="underline"` inside dense UI and `variant="pill"` for small segmented switches.

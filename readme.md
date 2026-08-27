@@ -73,8 +73,10 @@ Voice: **playful confidence**. Short sentences. Verbs first. Warm, quick, a litt
 - **data/** — TallyCount, MarkerBar, StatBlock *(hand-drawn data)*
 - **paper/** — FileCard, Bubble, StickyNote, Sticker *(the playful paper layer)*
 - **illustration/** — Illustration *(mini / spot / hero frames)*
-- **navigation/** — Tabs
+- **navigation/** — AppBar, ScreenHeader, Tabs
 - **feedback/** — Dialog, Toast, Tooltip
+
+**AppBar and ScreenHeader were extracted, not invented.** Both lived in the consuming app, one repeated across four top-level screens and the other across eight sub-screens, which is past the point where a pattern is a component. They take slots rather than content: the system owns the row, the type and the 44px targets whose visible ink is smaller, and owns neither your icon set nor your router.
 
 **Intentional additions:** the full set is an addition by necessity — no component source was provided, so this is the standard inventory sized to the brand (per from-scratch rules). Beyond it: **TallyCount / MarkerBar / StatBlock** (data drawn by hand — the brand shows numbers as tally marks and highlighter strokes, never as charts) and **FileCard / Bubble / StickyNote / Sticker** (the playful paper vocabulary — folders, speech bubbles, notes, die-cut stickers — which the brand's playfulness leans on and which would otherwise be hand-rolled per screen).
 
