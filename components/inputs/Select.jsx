@@ -9,14 +9,16 @@ const css=`
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-select')){const s=document.createElement('style');s.id='ax-css-select';s.textContent=css;document.head.appendChild(s);}
 const CHEV="url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 8.2c2.4 2.1 5 4.4 7.7 6.9 2.4-2.6 4.9-5 7.4-7.2'/%3E%3C/svg%3E\")";
 export function Select({label,hint,disabled=false,options,className='',style,children,...rest}){
+  // Same as Input: the hint is a description, not part of the field's name.
+  const msgId=React.useId();
   return <label className={('ax-field '+className).trim()} style={style}>
     {label&&<span className="ax-field__label">{label}</span>}
     <span className="ax-selectwrap">
-      <select className="ax-select" disabled={disabled} {...rest}>
+      <select className="ax-select" disabled={disabled} aria-describedby={hint?msgId:undefined} {...rest}>
         {options?options.map(o=>typeof o==='string'?<option key={o} value={o}>{o}</option>:<option key={o.value} value={o.value}>{o.label}</option>):children}
       </select>
       <i aria-hidden="true" style={{'--chevron':CHEV}}></i>
     </span>
-    {hint&&<span className="ax-field__msg">{hint}</span>}
+    {hint&&<span id={msgId} className="ax-field__msg">{hint}</span>}
   </label>;
 }

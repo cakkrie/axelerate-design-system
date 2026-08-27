@@ -816,6 +816,7 @@ function Input({
   style,
   ...rest
 }) {
+  const __msgId = React.useId();
   return /*#__PURE__*/React.createElement("label", {
     className: ('ax-field ' + className).trim(),
     style: style
@@ -823,8 +824,11 @@ function Input({
     className: "ax-field__label"
   }, label), /*#__PURE__*/React.createElement("input", _extends({
     className: 'ax-input' + (error ? ' ax-input--error' : ''),
-    disabled: disabled
+    disabled: disabled,
+    "aria-invalid": error ? true : undefined,
+    "aria-describedby": (error || hint) ? __msgId : undefined
   }, rest)), (error || hint) && /*#__PURE__*/React.createElement("span", {
+    id: __msgId,
     className: 'ax-field__msg' + (error ? ' ax-field__msg--error' : '')
   }, error || hint));
 }
@@ -898,6 +902,7 @@ function Select({
   children,
   ...rest
 }) {
+  const __msgId = React.useId();
   return /*#__PURE__*/React.createElement("label", {
     className: ('ax-field ' + className).trim(),
     style: style
@@ -907,7 +912,8 @@ function Select({
     className: "ax-selectwrap"
   }, /*#__PURE__*/React.createElement("select", _extends({
     className: "ax-select",
-    disabled: disabled
+    disabled: disabled,
+    "aria-describedby": hint ? __msgId : undefined
   }, rest), options ? options.map(o => typeof o === 'string' ? /*#__PURE__*/React.createElement("option", {
     key: o,
     value: o
@@ -920,6 +926,7 @@ function Select({
       '--chevron': CHEV
     }
   })), hint && /*#__PURE__*/React.createElement("span", {
+    id: __msgId,
     className: "ax-field__msg"
   }, hint));
 }

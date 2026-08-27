@@ -13,9 +13,16 @@ const css=`
 .ax-input--error:focus{border-bottom-color:var(--red-500);box-shadow:inset 0 -9px 0 var(--red-100)}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-input')){const s=document.createElement('style');s.id='ax-css-input';s.textContent=css;document.head.appendChild(s);}
 export function Input({label,hint,error,disabled=false,className='',style,...rest}){
+  // The hint and the error are the field's *description*, not part of its
+  // name. Nested inside the <label> they were, so a screen reader announced
+  // "School email any .edu address works" as the label. aria-describedby keeps
+  // the name clean and still reads the message after it.
+  const msgId=React.useId();
+  const msg=error||hint;
   return <label className={('ax-field '+className).trim()} style={style}>
     {label&&<span className="ax-field__label">{label}</span>}
-    <input className={'ax-input'+(error?' ax-input--error':'')} disabled={disabled} {...rest}/>
-    {(error||hint)&&<span className={'ax-field__msg'+(error?' ax-field__msg--error':'')}>{error||hint}</span>}
+    <input className={'ax-input'+(error?' ax-input--error':'')} disabled={disabled}
+      aria-invalid={error?true:undefined} aria-describedby={msg?msgId:undefined} {...rest}/>
+    {msg&&<span id={msgId} className={'ax-field__msg'+(error?' ax-field__msg--error':'')}>{msg}</span>}
   </label>;
 }
