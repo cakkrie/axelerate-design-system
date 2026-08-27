@@ -19,10 +19,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Card padding="sm" tint="coral" tilt={-1.5} scribble="03" style={{width:150,marginLeft:-14,zIndex:2}}><H style={{color:'#fff'}}>Dinners</H><T c="rgba(255,255,255,.82)">38 cities, monthly.</T></Card>
     <Card padding="sm" punch style={{width:150,marginLeft:-14,marginTop:10,zIndex:1}}><H>Filed away</H><T>Punched sheet.</T></Card>
   </div>
-  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}}>
+  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr 1fr',gap:12}}>
     <Card padding="sm" variant="quiet"><H>Quiet</H><T>Warm near-white.</T></Card>
     <Card padding="sm" variant="sketch"><H>Sketch</H><T>Dashed empty slot.</T></Card>
-    <Card padding="sm" interactive><H>Interactive</H><T>hover — lifts + tilts</T></Card>
+    <Card padding="sm" interactive><H>Interactive</H><T>hover — ink wash + shadow</T></Card>
+    <Card padding="sm" variant="flat" interactive="shadow"><H>Flat</H><T>hover — shadow only</T></Card>
   </div>
   <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center'}}>
     <Badge>Member</Badge><Badge tone="yellow">Most loved</Badge><Badge tone="cyan">Rooms</Badge><Badge tone="coral">Dinners</Badge><Badge tone="teal">Partners</Badge>
