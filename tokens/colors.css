@@ -9,7 +9,7 @@
 --amber-600:#B57500;--amber-700:#8A5900;--amber-500:#EE9D0B;--amber-100:#FBF0D6;
 --red-600:#C7333B;--red-500:#E5484D;--red-100:#FBE4E2;
 /* ACCENTS — punchy, high-contrast, one hue each. Ink text unless noted. */
---accent-pink:#E5237E;--accent-pink-soft:#FCDCEA;
+--accent-pink:#E5237E;--accent-pink-strong:#C4176A;--accent-pink-soft:#FCDCEA;
 --accent-coral:#FF6B4A;--accent-coral-soft:#FFE2D9;
 --accent-orange:#FB8500;--accent-orange-soft:#FFE8CC;
 --accent-yellow:#FFC93C;--accent-yellow-soft:#FFF3D4;
