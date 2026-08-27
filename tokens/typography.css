@@ -1,5 +1,5 @@
 :root{
---font-display:'Bricolage Grotesque','Instrument Sans',system-ui,sans-serif;
+--font-display:'Bricolage Grotesque','Instrument Sans',system-ui,sans-serif;--font-title:'DynaPuff','Bricolage Grotesque',system-ui,sans-serif;
 --font-body:'Instrument Sans',system-ui,-apple-system,sans-serif;
 --font-label:'Gabarito','Instrument Sans',system-ui,sans-serif;
 --font-hand:'Lacquer','Bricolage Grotesque',cursive;
