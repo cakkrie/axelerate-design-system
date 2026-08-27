@@ -1008,7 +1008,7 @@ Object.assign(__ds_scope, { AppBar });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const css = `
-.ax-screenhead__top{display:flex;align-items:center;gap:6px;margin-bottom:16px}
+.ax-screenhead__top{display:flex;align-items:center;gap:6px;margin-bottom:var(--sh-gap,16px)}
 .ax-screenhead__back{width:44px;height:44px;margin:-8px 0 -8px -14px;display:flex;align-items:center;justify-content:center;border:none;padding:0;background:none;cursor:pointer;text-decoration:none;color:var(--sh-ink,var(--text-primary))}
 .ax-screenhead__chev{display:inline-block;width:9px;height:9px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;border-radius:1px;transform:rotate(45deg)}
 .ax-screenhead__kicker{font-family:var(--font-label);font-size:var(--text-3xs);font-weight:var(--weight-bold);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--sh-muted,var(--text-secondary))}

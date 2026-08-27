@@ -27,4 +27,4 @@ Header for a screen you arrive at from somewhere else. Back control, the place y
 }
 ```
 
-Set them on any ancestor. `--sh-lede` covers the standfirst. Check the contrast you land on: the title is large text, but the kicker is 10px and needs the full 4.5:1.
+Set them on any ancestor. `--sh-lede` covers the standfirst, and `--sh-gap` (default 16px) opens up the space between the back row and the title, which a band usually wants more of than a white page does. Check the contrast you land on: the title is large text, but the kicker is 10px and needs the full 4.5:1.
