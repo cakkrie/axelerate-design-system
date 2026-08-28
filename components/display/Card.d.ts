@@ -6,7 +6,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   /** none · sm 16px · md 24px (default) · lg 32px. */
   padding?: 'none' | 'sm' | 'md' | 'lg';
   /** Fills the whole card with a playful tint; text colour flips automatically. */
-  tint?: 'violet' | 'pink' | 'coral' | 'orange' | 'yellow' | 'lime' | 'teal' | 'cyan' | 'navy' | 'lilac' | 'paper';
+  tint?: 'violet' | 'coral' | 'orange' | 'pink' | 'blush' | 'lavender' | 'yellow' | 'paper';
   /** Rotation in degrees — ±1…4 for a fanned stack. */
   tilt?: number;
   /** Two punched binder holes along the top edge. */

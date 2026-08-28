@@ -2,7 +2,7 @@ import * as React from 'react';
 /** Die-cut sticker — a label or icon with a white keyline, slapped onto cards, photos, and headlines. Upright by default; set `tilt` when you want it askew. */
 export interface StickerProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** Sticker colour (`ink` = black sticker with butter content). */
-  tone?: 'ink' | 'violet' | 'pink' | 'coral' | 'orange' | 'yellow' | 'lime' | 'teal' | 'cyan' | 'navy' | 'lilac';
+  tone?: 'ink' | 'violet' | 'coral' | 'orange' | 'pink' | 'blush' | 'lavender' | 'yellow';
   /** Circular icon sticker instead of a pill label. */
   round?: boolean;
   /** Diameter in px when `round` (default 44). */

@@ -6,7 +6,7 @@ const css=`
 .ax-note__h{font-family:var(--font-hand);font-size:22px;font-weight:600;line-height:1.1}
 .ax-note__l{font-family:var(--font-label);font-weight:600;font-size:10px;letter-spacing:.07em;text-transform:uppercase;opacity:.55}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-note')){const s=document.createElement('style');s.id='ax-css-note';s.textContent=css;document.head.appendChild(s);}
-const BG={yellow:'var(--butter-300)',lilac:'var(--tint-lilac-soft)',paper:'var(--gray-50)',cyan:'var(--accent-cyan-soft)',pink:'var(--accent-pink-soft)',lime:'var(--accent-lime-soft)'};
+const BG={yellow:'var(--butter-300)',lavender:'var(--accent-lavender-soft)',paper:'var(--gray-50)',blush:'var(--accent-blush-soft)',pink:'var(--accent-pink-soft)',coral:'var(--accent-coral-soft)'};
 export function StickyNote({tint='yellow',tilt=0,tape=false,fold=true,heading,label,className='',style,children,...rest}){
   return <div className={('ax-note'+(fold?' ax-note--fold':'')+' '+className).trim()}
     style={{'--nt-bg':BG[tint],...(tilt?{transform:`rotate(${tilt}deg)`}:null),...style}} {...rest}>

@@ -14,7 +14,7 @@ export interface IllustrationProps extends React.HTMLAttributes<HTMLSpanElement>
   /** Where the doodle icons live relative to the page. Default `assets/icons`. */
   glyphBase?: string;
   /** Accent shape behind the art, or `false` for none. */
-  blob?: 'violet' | 'lilac' | 'pink' | 'coral' | 'yellow' | 'lime' | 'cyan' | 'paper' | false;
+  blob?: 'violet' | 'lavender' | 'pink' | 'blush' | 'coral' | 'orange' | 'yellow' | 'paper' | false;
   /** Blob rotation in degrees (default −6). */
   tilt?: number;
   /** Alt text for the art. */

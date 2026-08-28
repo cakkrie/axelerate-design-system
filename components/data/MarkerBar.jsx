@@ -12,7 +12,7 @@ const css=`
 .ax-hatch__d[data-on]{background:var(--hb-on)}
 .ax-hatch__note{font-family:var(--font-hand);font-size:19px;color:var(--gray-600);transform:rotate(-1.5deg);margin-left:6px;white-space:nowrap}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-hatch')){const s=document.createElement('style');s.id='ax-css-hatch';s.textContent=css;document.head.appendChild(s);}
-const C={violet:'var(--brand-primary)',pink:'var(--accent-pink)',coral:'var(--accent-coral)',orange:'var(--accent-orange)',yellow:'var(--butter-500)',lime:'var(--accent-lime)',teal:'var(--accent-teal)',cyan:'var(--accent-cyan)',navy:'var(--accent-navy)',lilac:'var(--tint-lilac)',ink:'var(--ink-900)'};
+const C={violet:'var(--brand-primary)',coral:'var(--accent-coral)',orange:'var(--accent-orange)',pink:'var(--accent-pink)',blush:'var(--accent-blush)',lavender:'var(--accent-lavender)',yellow:'var(--butter-500)',ink:'var(--ink-900)'};
 const TILT=[-14,-19,-12,-17,-15,-21,-13,-18,-16,-20];
 const JIT=[0,1.5,-1,2,0,-1.5,1,-2,.5,-.5];
 export function MarkerBar({value=0,total=100,ticks=22,shape='hatch',color='violet',label,figure,note,height=26,inverse=false,className='',style,...rest}){

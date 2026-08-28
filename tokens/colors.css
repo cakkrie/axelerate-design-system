@@ -8,16 +8,17 @@
 --green-600:#0F8A5F;--green-500:#16A371;--green-100:#E4F5EA;
 --amber-600:#B57500;--amber-700:#8A5900;--amber-500:#EE9D0B;--amber-100:#FBF0D6;
 --red-600:#C7333B;--red-500:#E5484D;--red-100:#FBE4E2;
-/* ACCENTS — punchy, high-contrast, one hue each. Ink text unless noted. */
---accent-pink:#E5237E;--accent-pink-strong:#C4176A;--accent-pink-soft:#FCDCEA;
---accent-coral:#FF6B4A;--accent-coral-soft:#FFE2D9;
---accent-orange:#FB8500;--accent-orange-soft:#FFE8CC;
+/* ACCENTS — six hues, for paper objects, never page backgrounds.
+   Pick 2–3 per view, and never place neighbouring hues side by side.
+   White text on coral, pink and violet; ink on the rest.
+   Each -soft is its hue at 22% over white, the ratio --accent-yellow-soft
+   already shipped, so the tints stay one family rather than eight guesses. */
+--accent-coral:#F2542D;--accent-coral-soft:#FCD9D1;
+--accent-orange:#FF8A4C;--accent-orange-soft:#FFE5D7;
+--accent-pink:#DE5C96;--accent-pink-strong:#C43F7A;--accent-pink-soft:#F8DBE8;
+--accent-blush:#F3A7C6;--accent-blush-soft:#FCECF2;
+--accent-lavender:#C4AEF7;--accent-lavender-soft:#F2EDFD;
 --accent-yellow:#FFC93C;--accent-yellow-soft:#FFF3D4;
---accent-lime:#9BD22B;--accent-lime-soft:#EDF8D2;
---accent-teal:#14B8B8;--accent-teal-soft:#D5F3F3;
---accent-cyan:#28C3EE;--accent-cyan-soft:#DAF2FB;
---accent-navy:#1B2E63;--accent-navy-soft:#DDE2F0;
---tint-lilac:var(--violet-300);--tint-lilac-soft:var(--violet-100);
 /* brand */
 --brand-primary:var(--violet-600);--brand-primary-strong:var(--violet-700);--brand-primary-soft:var(--violet-50);--brand-accent:var(--accent-yellow);--brand-accent-strong:var(--butter-500);
 /* surfaces */

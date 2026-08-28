@@ -10,7 +10,7 @@ export interface MarkerBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** `hatch` slanted strokes (default) · `dot` wobbly hand-drawn dots. */
   shape?: 'hatch' | 'dot';
   /** Mark colour. */
-  color?: 'ink' | 'violet' | 'pink' | 'coral' | 'orange' | 'yellow' | 'lime' | 'teal' | 'cyan' | 'navy' | 'lilac';
+  color?: 'ink' | 'violet' | 'coral' | 'orange' | 'pink' | 'blush' | 'lavender' | 'yellow';
   /** Row label on the left. */
   label?: string;
   /** Right-aligned figure, e.g. "68%" or "38 / 50". */

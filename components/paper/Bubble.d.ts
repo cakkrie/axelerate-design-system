@@ -2,7 +2,7 @@ import * as React from 'react';
 /** Speech bubble with a hand-drawn wobble and a positionable tail — quotes, testimonials, chat moments, asides. */
 export interface BubbleProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Fill colour. */
-  tone?: 'paper' | 'ink' | 'violet' | 'pink' | 'coral' | 'orange' | 'yellow' | 'lime' | 'teal' | 'cyan' | 'navy' | 'lilac';
+  tone?: 'paper' | 'ink' | 'violet' | 'coral' | 'orange' | 'pink' | 'blush' | 'lavender' | 'yellow';
   /** Tail corner — a bubble always has a tail. */
   tail?: 'bl' | 'br' | 'tl' | 'tr';
   /** Optional attribution line under the quote (uppercase label type). */

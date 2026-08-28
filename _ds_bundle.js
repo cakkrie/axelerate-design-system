@@ -116,15 +116,12 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-hatch'))
 }
 const C = {
   violet: 'var(--brand-primary)',
-  pink: 'var(--accent-pink)',
   coral: 'var(--accent-coral)',
   orange: 'var(--accent-orange)',
+  pink: 'var(--accent-pink)',
+  blush: 'var(--accent-blush)',
+  lavender: 'var(--accent-lavender)',
   yellow: 'var(--butter-500)',
-  lime: 'var(--accent-lime)',
-  teal: 'var(--accent-teal)',
-  cyan: 'var(--accent-cyan)',
-  navy: 'var(--accent-navy)',
-  lilac: 'var(--tint-lilac)',
   ink: 'var(--ink-900)'
 };
 const TILT = [-14, -19, -12, -17, -15, -21, -13, -18, -16, -20];
@@ -254,14 +251,12 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-tally'))
 const C = {
   ink: 'var(--ink-900)',
   violet: 'var(--brand-primary)',
-  pink: 'var(--accent-pink)',
   coral: 'var(--accent-coral)',
   orange: 'var(--accent-orange)',
-  yellow: 'var(--butter-500)',
-  lime: 'var(--accent-lime)',
-  teal: 'var(--accent-teal)',
-  cyan: 'var(--accent-cyan)',
-  navy: 'var(--accent-navy)'
+  pink: 'var(--accent-pink)',
+  blush: 'var(--accent-blush)',
+  lavender: 'var(--accent-lavender)',
+  yellow: 'var(--butter-500)'
 };
 const TILT = [-3, 2, -1.5, 3, -2, 1.5, -2.5, 2.5];
 function TallyCount({
@@ -313,15 +308,12 @@ const css = `
 .ax-badge--warning{background:var(--warning-bg);color:var(--warning-fg)}
 .ax-badge--danger{background:var(--danger-bg);color:var(--danger-fg)}
 .ax-badge--neutral{background:var(--surface-quiet);color:var(--gray-700)}
-.ax-badge--pink{background:var(--accent-pink);color:#fff}
 .ax-badge--coral{background:var(--accent-coral);color:#fff}
 .ax-badge--orange{background:var(--accent-orange);color:var(--ink-900)}
-.ax-badge--yellow{background:var(--accent-yellow);color:var(--ink-900)}
-.ax-badge--lime{background:var(--accent-lime);color:var(--ink-900)}
-.ax-badge--teal{background:var(--accent-teal);color:var(--ink-900)}
-.ax-badge--cyan{background:var(--accent-cyan);color:var(--ink-900)}
-.ax-badge--navy{background:var(--accent-navy);color:#fff}
-.ax-badge--lilac{background:var(--tint-lilac);color:var(--ink-900)}`;
+.ax-badge--pink{background:var(--accent-pink);color:#fff}
+.ax-badge--blush{background:var(--accent-blush);color:var(--ink-900)}
+.ax-badge--lavender{background:var(--accent-lavender);color:var(--ink-900)}
+.ax-badge--yellow{background:var(--accent-yellow);color:var(--ink-900)}`;
 if (typeof document !== 'undefined' && !document.getElementById('ax-css-badge')) {
   const s = document.createElement('style');
   s.id = 'ax-css-badge';
@@ -376,20 +368,7 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-card')) 
   s.textContent = css;
   document.head.appendChild(s);
 }
-const ACC = {
-  violet: ['var(--brand-primary)', '#fff'],
-  pink: ['var(--accent-pink)', '#fff'],
-  coral: ['var(--accent-coral)', '#fff'],
-  orange: ['var(--accent-orange)', 'var(--ink-900)'],
-  yellow: ['var(--accent-yellow)', 'var(--ink-900)'],
-  lime: ['var(--accent-lime)', 'var(--ink-900)'],
-  teal: ['var(--accent-teal)', 'var(--ink-900)'],
-  cyan: ['var(--accent-cyan)', 'var(--ink-900)'],
-  navy: ['var(--accent-navy)', '#fff'],
-  lilac: ['var(--tint-lilac)', 'var(--ink-900)'],
-  paper: ['var(--gray-50)', 'var(--ink-900)'],
-  ink: ['var(--ink-900)', '#fff']
-};
+const ACC = {violet:['var(--brand-primary)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],pink:['var(--accent-pink)','#fff'],blush:['var(--accent-blush)','var(--ink-900)'],lavender:['var(--accent-lavender)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
 const TINT = ACC;
 const ALIAS = {
   default: 'sheet',
@@ -453,30 +432,8 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-tag')) {
   s.textContent = css;
   document.head.appendChild(s);
 }
-const SOLID = {
-  pink: ['var(--accent-pink)', '#fff'],
-  coral: ['var(--accent-coral)', '#fff'],
-  orange: ['var(--accent-orange)', 'var(--ink-900)'],
-  yellow: ['var(--accent-yellow)', 'var(--ink-900)'],
-  lime: ['var(--accent-lime)', 'var(--ink-900)'],
-  teal: ['var(--accent-teal)', 'var(--ink-900)'],
-  cyan: ['var(--accent-cyan)', 'var(--ink-900)'],
-  navy: ['var(--accent-navy)', '#fff'],
-  lilac: ['var(--tint-lilac)', 'var(--ink-900)'],
-  ink: ['var(--ink-900)', '#fff']
-};
-const SOFT = {
-  pink: ['var(--accent-pink-soft)', '#A31257'],
-  coral: ['var(--accent-coral-soft)', '#A8371E'],
-  orange: ['var(--accent-orange-soft)', '#8F4C00'],
-  yellow: ['var(--accent-yellow-soft)', '#8A6300'],
-  lime: ['var(--accent-lime-soft)', '#4F6D0E'],
-  teal: ['var(--accent-teal-soft)', '#0B6E6E'],
-  cyan: ['var(--accent-cyan-soft)', '#106A85'],
-  navy: ['var(--accent-navy-soft)', 'var(--accent-navy)'],
-  lilac: ['var(--tint-lilac-soft)', 'var(--violet-800)'],
-  ink: ['var(--surface-quiet)', 'var(--gray-700)']
-};
+const SOLID = {coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],pink:['var(--accent-pink)','#fff'],blush:['var(--accent-blush)','var(--ink-900)'],lavender:['var(--accent-lavender)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
+const SOFT = {coral:['var(--accent-coral-soft)','#A8371E'],orange:['var(--accent-orange-soft)','#8F4C00'],pink:['var(--accent-pink-soft)','#A31257'],blush:['var(--accent-blush-soft)','#9C3765'],lavender:['var(--accent-lavender-soft)','var(--violet-800)'],yellow:['var(--accent-yellow-soft)','#8A6300'],ink:['var(--surface-quiet)','var(--gray-700)']};
 function Tag({
   tone = 'ink',
   soft = false,
@@ -677,16 +634,7 @@ const SIZE = {
   spot: 220,
   hero: 520
 };
-const BLOB = {
-  violet: 'var(--violet-300)',
-  lilac: 'var(--tint-lilac)',
-  pink: 'var(--accent-pink-soft)',
-  coral: 'var(--accent-coral-soft)',
-  yellow: 'var(--accent-yellow-soft)',
-  lime: 'var(--accent-lime-soft)',
-  cyan: 'var(--accent-cyan-soft)',
-  paper: 'var(--gray-50)'
-};
+const BLOB = {violet:'var(--violet-300)',lavender:'var(--accent-lavender)',pink:'var(--accent-pink-soft)',blush:'var(--accent-blush-soft)',coral:'var(--accent-coral-soft)',orange:'var(--accent-orange-soft)',yellow:'var(--accent-yellow-soft)',paper:'var(--gray-50)'};
 function Illustration({
   tier = 'mini',
   src,
@@ -1103,20 +1051,7 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-bubble')
   s.textContent = css;
   document.head.appendChild(s);
 }
-const ACC = {
-  violet: ['var(--brand-primary)', '#fff'],
-  pink: ['var(--accent-pink)', '#fff'],
-  coral: ['var(--accent-coral)', '#fff'],
-  orange: ['var(--accent-orange)', 'var(--ink-900)'],
-  yellow: ['var(--accent-yellow)', 'var(--ink-900)'],
-  lime: ['var(--accent-lime)', 'var(--ink-900)'],
-  teal: ['var(--accent-teal)', 'var(--ink-900)'],
-  cyan: ['var(--accent-cyan)', 'var(--ink-900)'],
-  navy: ['var(--accent-navy)', '#fff'],
-  lilac: ['var(--tint-lilac)', 'var(--ink-900)'],
-  paper: ['var(--gray-50)', 'var(--ink-900)'],
-  ink: ['var(--ink-900)', '#fff']
-};
+const ACC = {violet:['var(--brand-primary)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],pink:['var(--accent-pink)','#fff'],blush:['var(--accent-blush)','var(--ink-900)'],lavender:['var(--accent-lavender)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
 const BG = Object.fromEntries(Object.entries(ACC).map(([k, v]) => [k, v[0]]));
 const FG = Object.fromEntries(Object.entries(ACC).map(([k, v]) => [k, v[1]]));
 function Bubble({
@@ -1167,20 +1102,7 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-file')) 
   s.textContent = css;
   document.head.appendChild(s);
 }
-const ACC = {
-  violet: ['var(--brand-primary)', '#fff'],
-  pink: ['var(--accent-pink)', '#fff'],
-  coral: ['var(--accent-coral)', '#fff'],
-  orange: ['var(--accent-orange)', 'var(--ink-900)'],
-  yellow: ['var(--accent-yellow)', 'var(--ink-900)'],
-  lime: ['var(--accent-lime)', 'var(--ink-900)'],
-  teal: ['var(--accent-teal)', 'var(--ink-900)'],
-  cyan: ['var(--accent-cyan)', 'var(--ink-900)'],
-  navy: ['var(--accent-navy)', '#fff'],
-  lilac: ['var(--tint-lilac)', 'var(--ink-900)'],
-  paper: ['var(--gray-50)', 'var(--ink-900)'],
-  ink: ['var(--ink-900)', '#fff']
-};
+const ACC = {violet:['var(--brand-primary)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],pink:['var(--accent-pink)','#fff'],blush:['var(--accent-blush)','var(--ink-900)'],lavender:['var(--accent-lavender)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
 const BG = Object.fromEntries(Object.entries(ACC).map(([k, v]) => [k, v[0]]));
 const FG = Object.fromEntries(Object.entries(ACC).map(([k, v]) => [k, v[1]]));
 function FileCard({
@@ -1227,20 +1149,7 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-sticker'
   s.textContent = css;
   document.head.appendChild(s);
 }
-const ACC = {
-  violet: ['var(--brand-primary)', '#fff'],
-  pink: ['var(--accent-pink)', '#fff'],
-  coral: ['var(--accent-coral)', '#fff'],
-  orange: ['var(--accent-orange)', 'var(--ink-900)'],
-  yellow: ['var(--accent-yellow)', 'var(--ink-900)'],
-  lime: ['var(--accent-lime)', 'var(--ink-900)'],
-  teal: ['var(--accent-teal)', 'var(--ink-900)'],
-  cyan: ['var(--accent-cyan)', 'var(--ink-900)'],
-  navy: ['var(--accent-navy)', '#fff'],
-  lilac: ['var(--tint-lilac)', 'var(--ink-900)'],
-  paper: ['var(--gray-50)', 'var(--ink-900)'],
-  ink: ['var(--ink-900)', '#fff']
-};
+const ACC = {violet:['var(--brand-primary)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],pink:['var(--accent-pink)','#fff'],blush:['var(--accent-blush)','var(--ink-900)'],lavender:['var(--accent-lavender)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
 const BG = Object.fromEntries(Object.entries(ACC).map(([k, v]) => [k, v[0]]));
 const FG = {
   ...Object.fromEntries(Object.entries(ACC).map(([k, v]) => [k, v[1]])),
@@ -1288,14 +1197,7 @@ if (typeof document !== 'undefined' && !document.getElementById('ax-css-note')) 
   s.textContent = css;
   document.head.appendChild(s);
 }
-const BG = {
-  yellow: 'var(--butter-300)',
-  lilac: 'var(--tint-lilac-soft)',
-  paper: 'var(--gray-50)',
-  cyan: 'var(--accent-cyan-soft)',
-  pink: 'var(--accent-pink-soft)',
-  lime: 'var(--accent-lime-soft)'
-};
+const BG = {yellow:'var(--butter-300)',lavender:'var(--accent-lavender-soft)',paper:'var(--gray-50)',blush:'var(--accent-blush-soft)',pink:'var(--accent-pink-soft)',coral:'var(--accent-coral-soft)'};
 function StickyNote({
   tint = 'yellow',
   tilt = 0,

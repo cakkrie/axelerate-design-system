@@ -4,7 +4,7 @@ const css=`
 .ax-tally__g{display:flex;align-items:flex-end;gap:5px}
 .ax-tally__m{width:3px;background:var(--ty-color);border-radius:2px}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-tally')){const s=document.createElement('style');s.id='ax-css-tally';s.textContent=css;document.head.appendChild(s);}
-const C={ink:'var(--ink-900)',violet:'var(--brand-primary)',pink:'var(--accent-pink)',coral:'var(--accent-coral)',orange:'var(--accent-orange)',yellow:'var(--butter-500)',lime:'var(--accent-lime)',teal:'var(--accent-teal)',cyan:'var(--accent-cyan)',navy:'var(--accent-navy)'};
+const C={ink:'var(--ink-900)',violet:'var(--brand-primary)',coral:'var(--accent-coral)',orange:'var(--accent-orange)',pink:'var(--accent-pink)',blush:'var(--accent-blush)',lavender:'var(--accent-lavender)',yellow:'var(--butter-500)'};
 const TILT=[-3,2,-1.5,3,-2,1.5,-2.5,2.5];
 export function TallyCount({count=0,color='ink',height=34,label,className='',style,...rest}){
   const n=Math.max(0,Math.round(count));

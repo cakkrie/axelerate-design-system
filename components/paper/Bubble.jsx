@@ -9,7 +9,7 @@ const css=`
 .ax-bubble__c{margin:0}
 .ax-bubble__w{margin:8px 0 0;font-family:var(--font-label);font-weight:600;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-bubble')){const s=document.createElement('style');s.id='ax-css-bubble';s.textContent=css;document.head.appendChild(s);}
-const ACC={violet:['var(--brand-primary)','#fff'],pink:['var(--accent-pink)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],lime:['var(--accent-lime)','var(--ink-900)'],teal:['var(--accent-teal)','var(--ink-900)'],cyan:['var(--accent-cyan)','var(--ink-900)'],navy:['var(--accent-navy)','#fff'],lilac:['var(--tint-lilac)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
+const ACC={violet:['var(--brand-primary)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],pink:['var(--accent-pink)','#fff'],blush:['var(--accent-blush)','var(--ink-900)'],lavender:['var(--accent-lavender)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
 const BG=Object.fromEntries(Object.entries(ACC).map(([k,v])=>[k,v[0]]));
 const FG=Object.fromEntries(Object.entries(ACC).map(([k,v])=>[k,v[1]]));
 export function Bubble({tone='paper',tail='bl',who,tilt=0,className='',style,children,...rest}){

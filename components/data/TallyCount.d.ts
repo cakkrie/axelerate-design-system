@@ -4,7 +4,7 @@ export interface TallyCountProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** How many marks to draw; every fifth becomes the diagonal slash. Keep under ~30. */
   count?: number;
   /** Mark colour. */
-  color?: 'ink' | 'violet' | 'pink' | 'coral' | 'orange' | 'yellow' | 'lime' | 'teal' | 'cyan' | 'navy';
+  color?: 'ink' | 'violet' | 'coral' | 'orange' | 'pink' | 'blush' | 'lavender' | 'yellow';
   /** Mark height in px (default 34). */
   height?: number;
   /** Screen-reader label; falls back to "<count> marks". */

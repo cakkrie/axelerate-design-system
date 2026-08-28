@@ -9,7 +9,7 @@ const css=`
 .ax-file li{display:flex;gap:8px;font-size:13.5px;line-height:1.45}
 .ax-file li::before{content:'✦';font-size:11px;line-height:1.6;opacity:.9}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-file')){const s=document.createElement('style');s.id='ax-css-file';s.textContent=css;document.head.appendChild(s);}
-const ACC={violet:['var(--brand-primary)','#fff'],pink:['var(--accent-pink)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],lime:['var(--accent-lime)','var(--ink-900)'],teal:['var(--accent-teal)','var(--ink-900)'],cyan:['var(--accent-cyan)','var(--ink-900)'],navy:['var(--accent-navy)','#fff'],lilac:['var(--tint-lilac)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
+const ACC={violet:['var(--brand-primary)','#fff'],coral:['var(--accent-coral)','#fff'],orange:['var(--accent-orange)','var(--ink-900)'],pink:['var(--accent-pink)','#fff'],blush:['var(--accent-blush)','var(--ink-900)'],lavender:['var(--accent-lavender)','var(--ink-900)'],yellow:['var(--accent-yellow)','var(--ink-900)'],paper:['var(--gray-50)','var(--ink-900)'],ink:['var(--ink-900)','#fff']};
 const BG=Object.fromEntries(Object.entries(ACC).map(([k,v])=>[k,v[0]]));
 const FG=Object.fromEntries(Object.entries(ACC).map(([k,v])=>[k,v[1]]));
 export function FileCard({tint='violet',tab,title,items,tilt=0,className='',style,children,...rest}){

@@ -9,7 +9,7 @@ const css=`
 .ax-ill__slot i{font-style:normal;font-family:var(--font-label);font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)}`;
 if(typeof document!=='undefined'&&!document.getElementById('ax-css-ill')){const s=document.createElement('style');s.id='ax-css-ill';s.textContent=css;document.head.appendChild(s);}
 const SIZE={mini:96,spot:220,hero:520};
-const BLOB={violet:'var(--violet-300)',lilac:'var(--tint-lilac)',pink:'var(--accent-pink-soft)',coral:'var(--accent-coral-soft)',yellow:'var(--accent-yellow-soft)',lime:'var(--accent-lime-soft)',cyan:'var(--accent-cyan-soft)',paper:'var(--gray-50)'};
+const BLOB={violet:'var(--violet-300)',lavender:'var(--accent-lavender)',pink:'var(--accent-pink-soft)',blush:'var(--accent-blush-soft)',coral:'var(--accent-coral-soft)',orange:'var(--accent-orange-soft)',yellow:'var(--accent-yellow-soft)',paper:'var(--gray-50)'};
 export function Illustration({tier='mini',src,glyph,glyphBase='assets/icons',blob='lilac',tilt=-6,alt='',label,size,className='',style,...rest}){
   const d=size||SIZE[tier];
   const art=src?<img className="ax-ill__art" src={src} alt={alt}/>
