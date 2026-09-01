@@ -15,6 +15,17 @@ if(typeof document!=='undefined'&&!document.getElementById('ax-css-dialog')){con
 export const Dialog=React.forwardRef(function Dialog({open=false,onClose,title,footer,width=440,tape=true,initialFocus,children,...rest},ref){
   const inner=React.useRef(null);
   const returnTo=React.useRef(null);
+  // The focus effect must depend on `open` and nothing else. It used to list
+  // onClose and initialFocus, and its cleanup hands focus back to whatever
+  // opened the dialog — so a caller who passed an inline onClose, and whose own
+  // state changed as you typed, re-ran this effect on every keystroke and had
+  // the cleanup pull focus straight out of the field. Only the first character
+  // ever landed. Latest-value refs keep the handler current without making the
+  // effect depend on identity.
+  const onCloseRef=React.useRef(onClose);
+  const focusRef=React.useRef(initialFocus);
+  onCloseRef.current=onClose;
+  focusRef.current=initialFocus;
   React.useImperativeHandle(ref,()=>inner.current,[]);
 
   React.useEffect(()=>{
@@ -24,11 +35,12 @@ export const Dialog=React.forwardRef(function Dialog({open=false,onClose,title,f
     // outside of, tabbing through the page it is covering.
     returnTo.current=document.activeElement;
     const node=inner.current;
-    const target=(initialFocus&&initialFocus.current)||node;
+    const wanted=focusRef.current;
+    const target=(wanted&&wanted.current)||node;
     target&&target.focus();
 
     const onKey=(e)=>{
-      if(e.key==='Escape'){onClose&&onClose();return;}
+      if(e.key==='Escape'){onCloseRef.current&&onCloseRef.current();return;}
       if(e.key!=='Tab'||!node)return;
       // Tab cycles inside the dialog. Without this it walks straight out into
       // the content behind the overlay, which is not reachable by mouse.
@@ -47,7 +59,7 @@ export const Dialog=React.forwardRef(function Dialog({open=false,onClose,title,f
       const back=returnTo.current;
       back&&back.isConnected&&back.focus();
     };
-  },[open,onClose,initialFocus]);
+  },[open]);
 
   if(!open)return null;
   return <div className="ax-dialog-overlay" onMouseDown={e=>{if(e.target===e.currentTarget&&onClose)onClose();}}>

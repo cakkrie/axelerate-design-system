@@ -17,6 +17,7 @@ export * from './components/inputs/Input';
 export * from './components/inputs/Radio';
 export * from './components/inputs/Select';
 export * from './components/inputs/Switch';
+export * from './components/inputs/Textarea';
 export * from './components/navigation/AppBar';
 export * from './components/navigation/ScreenHeader';
 export * from './components/navigation/Tabs';

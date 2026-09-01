@@ -17,6 +17,7 @@ export { Input } from './components/inputs/Input.jsx';
 export { Radio } from './components/inputs/Radio.jsx';
 export { Select } from './components/inputs/Select.jsx';
 export { Switch } from './components/inputs/Switch.jsx';
+export { Textarea } from './components/inputs/Textarea.jsx';
 export { AppBar } from './components/navigation/AppBar.jsx';
 export { ScreenHeader } from './components/navigation/ScreenHeader.jsx';
 export { Tabs } from './components/navigation/Tabs.jsx';
