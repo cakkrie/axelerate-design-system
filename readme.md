@@ -58,7 +58,7 @@ Voice: **playful confidence**. Short sentences. Verbs first. Warm, quick, a litt
 - **Layout:** centered 1160px container, 12-col mental model, generous whitespace; sticky top nav; toasts fixed bottom-right at 24px.
 
 ## Iconography
-- **Doodle Icons by Khushmeen Sidhu** — the icon voice. 38 curated hand-drawn icons copied into `assets/icons/` (free for commercial use, no attribution; source repo: github.com/svatsa159/react-doodle-icons). Fill-based SVGs; tint with the `.ax-icon` utility (`background:currentColor` + `mask:url(icon)`). Sizes 20–34px, ink-900 default, violet-600 for emphasis, butter on ink chips, ±3° tilt when decorative.
+- **Doodle Icons by Khushmeen Sidhu** — the icon voice. 38 curated hand-drawn icons copied into `assets/icons/`, plus one (`gift`) drawn here to match when the set had no present in it (free for commercial use, no attribution; source repo: github.com/svatsa159/react-doodle-icons). Fill-based SVGs; tint with the `.ax-icon` utility (`background:currentColor` + `mask:url(icon)`). Sizes 20–34px, ink-900 default, violet-600 for emphasis, butter on ink chips, ±3° tilt when decorative.
 - **Micro-utility glyphs** (Select chevron, Dialog ×, Checkbox tick) stay minimal 2px geometric strokes at 12–16px — invisible chrome. Everything user-facing uses doodle icons; never mix the two voices in one spot.
 - **Doodles** (`assets/doodles/`): circle-violet, underline-butter, arrow-violet, sparkle-butter — abstract marker strokes (4–5px round caps), violet/butter only, 1–2 per view.
 - Color: ink-900 default; violet for emphasis. The set is line art, so icons sit **naked in the layout** — never inside a filled chip or on an accent fill, where thin strokes disappear.
@@ -86,7 +86,7 @@ Voice: **playful confidence**. Short sentences. Verbs first. Warm, quick, a litt
 - `styles.css` — global entry (imports everything in `tokens/`)
 - `tokens/` — fonts, colors, typography, spacing, effects, base
 - `guidelines/` — 24 specimen cards (Colors, Type, Spacing, Effects, Brand)
-- `assets/icons/` — 38 Doodle Icons (hand-drawn, tintable via mask)
+- `assets/icons/` — 39 line icons (38 Doodle Icons plus `gift`, drawn here in the same idiom; hand-drawn, tintable via mask)
 - `assets/doodles/` — marker-stroke doodle SVGs (violet circle/arrow, butter underline/sparkle)
 - `components/` — primitives + per-group `*.card.html` specimens
 - `thumbnail.html` — homepage tile · `SKILL.md` — agent skill entry
